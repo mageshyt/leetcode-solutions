@@ -21,6 +21,7 @@ const countKDifference = (nums, k) => {
   for (let i = 0; i < nums.length; i++) {
     map.set(nums[i], map.get(nums[i]) + 1 || 1);
   }
+  console.log(map);
   for (let num of nums) {
     if (map.has(num + k)) {
       count += map.get(num + k);
