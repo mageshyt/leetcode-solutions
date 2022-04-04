@@ -23,6 +23,7 @@ const evalRPN = (tokens) => {
   const stack = [];
   for (let i = 0; i < tokens.length; i++) {
     const curr = tokens[i];
+    console.log(stack, curr);
     if (curr == "+") {
       stack.push(stack.pop() + stack.pop());
     } else if (curr == "-") {
@@ -30,7 +31,9 @@ const evalRPN = (tokens) => {
     } else if (curr == "*") {
       stack.push(stack.pop() * stack.pop());
     } else if (curr == "/") {
-      stack.push(Math.trunc(stack.pop() / stack.pop()));
+      const a = stack.pop();
+      const b = stack.pop();
+      stack.push(Math.trunc(b / a));
     } else {
       stack.push(parseInt(curr));
     }
@@ -38,4 +41,5 @@ const evalRPN = (tokens) => {
   return stack[0];
 };
 
-console.log(evalRPN(["2", "1", "+", "3", "*"]));
+// console.log(evalRPN(["2", "1", "+", "3", "*"]));
+console.log(evalRPN(["4", "13", "5", "/", "+"]));
