@@ -27,3 +27,4 @@ const checkIfPangram = (sentence) => {
     return true;
 };
 console.log(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"));
+ 

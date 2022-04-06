@@ -23,7 +23,7 @@ const findSubstring = (s, words) => {
   const map = new Map();
   const len = words.length;
   const wordLen = words[0].length;
-  const totalLen = len * wordLen;
+  const totalLen = len * wordLen; //! all of the word going to have same length
   const res = [];
   for (const word of words) {
     map.set(word, map.get(word) + 1 || 1);
@@ -38,7 +38,6 @@ const findSubstring = (s, words) => {
     const len = tempStr.length; //! substring length
     for (let i = 0; i < len; i += wordLen) {
       const word = tempStr.substr(i, wordLen);
-      console.log({ word });
       if (!map.has(word)) return false;
       visited.set(word, (visited.get(word) || 0) + 1);
     }
