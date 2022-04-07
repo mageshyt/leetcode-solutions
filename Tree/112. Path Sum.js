@@ -25,20 +25,21 @@ Input: root = [], targetSum = 0
 Output: false
 Explanation: Since the tree is empty, there are no root-to-leaf paths.`;
 
+const helper = (node, target) => {
+  if (!node) return false;
+  if (node) {
+    target -= node.val;
+  }
+  if (!node.left && !node.right && target === node.val) {
+    return true;
+  }
+  return (
+    helper(node.left, target - node.val) ||
+    helper(node.right, target - node.val)
+  );
+};
 const hasPathSum = (root, targetSum) => {
   if (!root) return false;
   if (!targetSum) return false;
-
-  const helper = (node, target) => {
-    if (!root) return null;
-    if (root) {
-      target -= node.val;
-    }
-    //! if our left and right node are null
-    if (root.left === null && root.right === null) {
-      return target === 0;
-    }
-    return helper(root.left, targetSum) || helper(root.right, targetSum);
-  };
   return helper(root, targetSum);
 };
