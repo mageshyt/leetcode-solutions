@@ -34,6 +34,7 @@ class KthLargest:
         self.k = k
         self.minHeap = nums
         heapq.heapify(self.minHeap)
+        print(f'Heap : {self.minHeap}')
         while len(self.minHeap) > k:
             heapq.heappop(self.minHeap) # it will remove the smallest element from the heap 
 
@@ -45,7 +46,10 @@ class KthLargest:
         return self.minHeap[0] #first element in the heap is the kth largest element
 
 
-test=KthLargest(4,[3,4,8,1,2,9])
+test=KthLargest(3,[4,5,8,2])
+print(test.add(3))
 print(test.add(5))
 print(test.add(10))
+print(test.add(9))
+print(test.add(4))
 
