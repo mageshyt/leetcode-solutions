@@ -22,7 +22,7 @@ var searchInsert = function (nums, target) {
   let pointer = 0;
   let pointer2 = nums[nums.length - 1];
   if (nums.length === 0) {
-    return 0
+    return 0;
   }
   while (pointer < nums.length) {
     if (target === nums[pointer]) {
@@ -38,3 +38,24 @@ var searchInsert = function (nums, target) {
 };
 nums = [1, 3, 5, 7];
 console.log(searchInsert(nums, 2));
+console.log(searchInsert(nums, 7));
+
+const searchInsert2 = (nums, target) => {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+    if (nums[mid] === target) {
+      return mid;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return left;
+};
+
+console.log(searchInsert2(nums, 2));
+console.log(searchInsert2(nums, 7));

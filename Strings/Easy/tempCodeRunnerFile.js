@@ -1,2 +1,2 @@
-console.log(arrayStringsAreEqual(["ab", "c"], ["a", "bc"]));
-// console.log(arrayStringsAreEqual(["a", "cb"], ["ab", "c"]));
+    console.log(s.slice(i, i + k));
+    if (j >= s.length) j = s.length - 1;
