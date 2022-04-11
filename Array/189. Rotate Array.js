@@ -42,3 +42,13 @@ const rotate = (nums, k) => {
 };
 (nums = [-1, -100, 3, 99]), (k = 2);
 console.log(rotate(nums, k));
+
+//! solution 2
+const rotate2 = (nums, k) => {
+  k = k % nums.length;
+  console.log("k 👉", k);
+  for (let i = 0; i < k; i++) {
+    nums.unshift(nums.pop());
+  }
+  return nums;
+};
