@@ -1,30 +1,40 @@
-Please dont downvote guys if cannot support,We are putting lot of effort in it🙂
+**Please dont downvote guys if cannot support,We are putting lot of effort in it🙂**
 
+```What the Question asking us to do 🤔 ?
 
+    Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
 
-What the Question asking us to do 🤔 ?
-The Question is asking us to add the value and return the kth largest element in the array.
+    Approach Explanation :
+        1. we will create  hashmap to count the frequency of the number
+        2. we will create a new array to store the k most frequent elements
+        3. we will find the frequency of the number and store it in the hashmap
+        4. we will iterate through the hashmap and store the k most frequent elements in the new array
+        5. we will return the new array
 
-What we going to do ✅ ?
-1.We are going to use minHeap
-2.in minHeap we can add and pop the element in log(n) time which is more optimized
-3.we can get min value at O(1)
-4.our heap should be k size because we are need to return kth largest element
-Example:
-example our heap=[3,4,5,8] k=3 so k th largest element is 4 and we no need 3 so will pop it and make our head=[4,5,8] which is length == k
-
-Solution Explanation:
-Inputs:
-arr=[4,5,8,2]
-k=3
-now we are going to make heap
-heap=[2,4,5,8]
-now we are going to pop the element which is 2 and make our heap=[4,5,8] because we need only k sized heap
 Big o:
-n-->size of the s
-Time: O((n-k)log n) k could be small so O(n logn)
-Space: O(n)
+    n-->size of the nums
+    Time: O(n)
+    Space: O(n+n) --> O(n)
+
+```
+
+`Javascript`
+
+```
+const topKFrequent = (nums, k) => {
+  const map = new Map(); //! map to count the frequency of the number
+  for (let num of nums) {
+    map.set(num, map.get(num) + 1 || 1);
+  }
+  const result = [];
+  for (let [key, value] of map) {
+    result.push([key, value]); //! we will add the number and its frequency
+  }
+  result.sort((a, b) => b[1] - a[1]); //! we will solve with respect to the frequency of the number
+  return result.slice(0, k).map((x) => x[0]); //! we will slice the list with respect to length of k
+};
+```
 
 
-UPVOTE if you like 😃 , If you have any question, feel free to ask.
 
+`UPVOTE if you like 😃 , If you have any question, feel free to ask.`

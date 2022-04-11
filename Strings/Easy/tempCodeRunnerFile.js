@@ -1,2 +1,3 @@
-console.log(arrayStringsAreEqual(["ab", "c"], ["a", "bc"]));
-// console.log(arrayStringsAreEqual(["a", "cb"], ["ab", "c"]));
+console.log(isIsomorphic("foo", "bar"));
+console.log(isIsomorphic("egg", "add"));
+console.log(isIsomorphic("paper", "title"));

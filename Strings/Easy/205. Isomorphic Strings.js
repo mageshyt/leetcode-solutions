@@ -19,9 +19,29 @@ Example 3:
 Input: s = "paper", t = "title"
 Output: true`;
 const isIsomorphic = (s, t) => {
-  const hash = new Map();
+  const map = new Map();
   for (let i = 0; i < s.length; i++) {
-    hash.set(s[i], true);
+    if (!map.has(s[i])) {
+      map.set(s[i], t[i]);
+    }
   }
+  const map2 = new Map();
+  for (let [key, value] of map) {
+    if (!map2.has(value)) {
+      map2.set(value, key);
+    } else {
+      return false;
+    }
+  }
+  // console.log(map);
+  for (let i = 0; i < t.length; i++) {
+    if (map.get(s[i]) !== t[i]) {
+      return false;
+    }
+  }
+  return true;
 };
 console.log(isIsomorphic("foo", "bar"));
+console.log(isIsomorphic("egg", "add"));
+console.log(isIsomorphic("paper", "title"));
+console.log(isIsomorphic("badc", "baba"));

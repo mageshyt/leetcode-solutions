@@ -1,23 +1,35 @@
-from cv2 import split
+'''Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+ 
+
+Constraints:
+
+1 <= nums.length <= 105
+k is in the range [1, the number of unique elements in the array].
+It is guaranteed that the answer is unique.'''
+
+
+from typing import Counter
 
 
 class Solution:
-    def minRemoveToMakeValid(self, s) :
-        stack=[]
-        split_str=list(s)
-        for i in range(len(s)):
-            if s[i]=='(':
-                # if current char is '(' then push it to stack
-                stack.append(i)
-            elif s[i]==')':
-                # if current char is ')' then pop top of the stack
-                if len(stack) !=0:
-                    stack.pop()
-                else:
-                    # if our stack is empty then we can't pop so make  current char as ''
-                    split_str[i]=""
-        for i in stack:
-            split_str[i]=""
-        return '' .join(split_str)
+    def topKFrequent(self, nums, k) :
+        map=Counter(nums) # counter is used to count the frequency of each element
+        result=[]
+        for key,value in map.items():
+            result.append([key,value])
+        result.sort(key=lambda x:x[1],reverse=True) # sort with respect to the second element in the list
+        return [x[0] for x in result[:k]] # return the first k elements in the list
+
 test=Solution()
-print(test.minRemoveToMakeValid("lee(t(c)o)de)"))
+print(test.topKFrequent([1,1,1,2,2,3],2))
