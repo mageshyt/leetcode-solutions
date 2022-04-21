@@ -35,7 +35,7 @@ const numIslands = (grid) => {
     [0, 1], // up
     [0, -1], // down
   ];
-  const dfs = (row, col) => {
+  const bfs = (row, col) => {
     const queue = [[row, col]];
     const key = `${row}-${col}`;
     visited.set(key, true);

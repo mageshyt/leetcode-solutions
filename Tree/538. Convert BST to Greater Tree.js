@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 `Given the root of a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus the sum of all keys greater than the original key in BST.
 
 As a reminder, a binary search tree is a tree that satisfies these constraints:
@@ -29,3 +30,6 @@ const convertBST = (root) => {
   inorder(root);
   return root;
 };
+=======
+ 
+>>>>>>> 6364d036c986cdd7e40614fb11c24596b391e3e0
