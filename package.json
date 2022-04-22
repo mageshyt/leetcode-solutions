@@ -18,5 +18,14 @@
   "homepage": "https://github.com/mageshyt/leetcode-solutions#readme",
   "dependencies": {
     "buckets-js": "^1.98.2"
+  },
+  "cspell": {
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [],
+    "ignoreWords": [],
+    "import": []
   }
 }

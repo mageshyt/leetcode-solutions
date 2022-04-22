@@ -17,8 +17,15 @@ Input: n = 11111111111111111111111111111101
 Output:   3221225471 (10111111111111111111111111111111)
 Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.`;
 
-const reverseBits = (n = String(n)) => {
-  console.log(String(n)[0]);
+const reverseBits = (n) => {
+  const reversed = n.toString(2).split("").reverse();
+  const zeros = 32 - reversed.length;
+  if (zeros > 0) {
+    while (zeros--) {
+      reversed.push("0");
+    }
+  }
+  return parseInt(reversed.join(""), 2);
 };
 
 console.log(reverseBits(00000010100101000001111010011100));
