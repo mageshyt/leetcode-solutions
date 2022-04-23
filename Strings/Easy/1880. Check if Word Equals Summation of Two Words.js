@@ -42,7 +42,7 @@ const getWordSum = (word) => {
   for (let char in word) {
     const curr = word.charCodeAt(char) - 97; //! curr char val
     sum1 = 10 * sum1 + curr;
-  }
+  } 
   return sum1;
 };
 
