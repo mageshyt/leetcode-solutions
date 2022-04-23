@@ -33,7 +33,7 @@ const maxSlidingWindow = (nums, k) => {
     while (deque.length && nums[deque[deque.length - 1]] < nums[right]) {
       deque.pop();
     }
-    console.log({ right, deque, val: nums[right] });
+    // console.log({ right, deque, val: nums[right] });
     deque.push(right);
     //! remove the left value from deque
     if (0 > deque[0]) {
@@ -49,3 +49,25 @@ const maxSlidingWindow = (nums, k) => {
 };
 
 console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
+
+//! solution 2
+
+const maxSlidingWindow2 = (nums, k) => {
+  const res = [];
+  const deque = [];
+  let max = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    if (deque.length !== k) {
+      deque.push(nums[i]);
+      max = Math.max(max, nums[i]);
+    } else {
+      let pop = deque.shift();
+      max -= pop;
+      res.push(max);
+      deque.push(nums[i]);
+    }
+  }
+  return res;
+};
+
+console.log(maxSlidingWindow2([1, 3, -1, -3, 5, 3, 6, 7], 3));
