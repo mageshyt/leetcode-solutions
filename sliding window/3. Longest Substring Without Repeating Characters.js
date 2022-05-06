@@ -20,5 +20,21 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
  `;
 
+const lengthOfLongestSubstring = (s) => {
+  const hash = new Map();
+  let windowStart = 0;
+  let maxLength = 0;
+  for (let windowEnd = 0; windowEnd < s.length; windowEnd++) {
+    const rightChar = s[windowEnd];
+    if (hash.has(rightChar)) {
+      windowStart = Math.max(windowStart, hash.get(rightChar) + 1);
+    }
+    hash.set(rightChar, windowEnd);
+    console.log({ windowStart, windowEnd, maxLength, hash });
+    maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
+  }
+  return maxLength;
+};
 
- const lengthOfLongestSubstring = (s) => {}
+console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(lengthOfLongestSubstring("pwwkew"));
