@@ -31,7 +31,27 @@ On day 31, you bought a 1-day pass for costs[0] = $2 which covered day 31.
 In total, you spent $17 and covered all the days of your travel.`;
 
 const mincostTickets = (days, costs) => {
-    //
+  //
+  const table = new Array(days[days.length - 1] + 1).fill(0);
+  const map = new Map();
+  const ticketDays = [1, 7, 30];
+  const helper = (i) => {
+    //! when we reach the end of the array
+    if (i === days.length) return 0;
+    if (map.has(i)) return map.get(i);
+    map.set(i, Infinity);
+    for (let j = 0; j < 3; j++) {
+      const day = ticketDays[j];
+      const cost = costs[j];
+      let k = i;
+      while (k < days.length && days[k] < days[i] + day) {
+        k++;
+      }
+      map.set(i, Math.min(map.get(i), helper(k) + cost));
+    }
+    return map.get(i);
+  };
+  return helper(0);
 };
 (days = [1, 4, 6, 7, 8, 20]), (costs = [2, 7, 15]);
 console.log(mincostTickets(days, costs));
