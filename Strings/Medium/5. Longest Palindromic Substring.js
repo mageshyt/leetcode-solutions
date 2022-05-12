@@ -22,19 +22,34 @@ Output: "a"
 `;
 const longestPalindrome = (s) => {
   let longest = "";
+  let resLen = 0;
   for (let i = 0; i < s.length; i++) {
+    // * odd palindrome
+    //! i is going to be the center of the palindrome
     let left = i;
     let right = i;
-    while (left >= 0 && right < s.length) {
-      if (s[left] === s[right]) {
-        if (right - left + 1 > longest.length) {
-          longest = s.slice(left, right + 1);
-        }
-        left--;
-        right++;
-      } else {
-        break;
+    `
+    we will move the pointer from center
+    `;
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      if (right - left + 1 > resLen) {
+        longest = s.slice(left, right + 1);
+        resLen = right - left + 1;
       }
+      left--; //! move left pointer to left side form center
+      right++; //! move right pointer to right side from center
+    }
+
+    // * even palindrome
+    left = i;
+    right = i + 1;
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      if (right - left + 1 > resLen) {
+        longest = s.slice(left, right + 1);
+        resLen = right - left + 1;
+      }
+      left--;
+      right++;
     }
   }
   return longest;
