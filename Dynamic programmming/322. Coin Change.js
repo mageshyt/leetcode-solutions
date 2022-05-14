@@ -29,6 +29,7 @@ const coinChange = (coins, amount) => {
         table[i] = Math.min(table[i], table[i - val] + 1);
       }
     }
+    console.log(table);
   }
   return table[amount] === amount + 1 ? -1 : table[amount];
 };
