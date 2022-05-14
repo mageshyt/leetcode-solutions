@@ -25,32 +25,28 @@ Input: s = "pbbcggttciiippooaais", k = 2
 Output: "ps"`;
 
 const removeDuplicates = (S, K) => {
-  const map = new Map();
-  let count = 0;
   let result = "";
+
+  const stacks = [[]]; //! [char, count]
   for (let i = 0; i < S.length; i++) {
-    map.set(S[i], map.get(S[i]) + 1 || 1);
-  }
-  for (let [key, val] of map.entries()) {
-    if (val % K === 0) {
-      map.set(key, val % K);
-      count++;
+    if (stacks && stacks[stacks.length - 1][0] === S[i]) {
+      stacks[stacks.length - 1][1]++;
+
+      if (stacks[stacks.length - 1][1] === K) {
+        stacks.pop();
+      }
     } else {
-      result += key;
+      stacks.push([S[i], 1]);
     }
   }
 
-  for (let [key, val] of map.entries()) {
-    if (val % K === 0) {
-      map.set(key, val % K);
-    } else {
-      result += key;
-    }
+  for (let i = 0; i < stacks.length; i++) {
+    if (stacks[i][0]) result += stacks[i][0].repeat(stacks[i][1]);
   }
   return result;
 };
 console.log(removeDuplicates("pbbcggttciiippooaais", 2));
 
-console.log(removeDuplicates("abcd", 2));
+// console.log(removeDuplicates("abcd", 2));
 
-console.log(removeDuplicates("deeedbbcccbdaa", 3));
+// console.log(removeDuplicates("deeedbbcccbdaa", 3));
