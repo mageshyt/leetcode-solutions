@@ -28,7 +28,7 @@ const minSubArrayLen = (target, nums) => {
       windowStart++;
     }
   }
-  return min === Number.MAX_SAFE_INTEGER ? 0 : min;
+  return min === Number.MAX_SAFE_INTEGER ? 0 : min; 
 };
 
 console.log(minSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
