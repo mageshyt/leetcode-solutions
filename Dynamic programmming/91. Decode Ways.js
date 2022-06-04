@@ -56,3 +56,29 @@ const numDecodings = (str) => {
 };
 
 console.log(numDecodings("12"));
+
+//! DP
+
+const dpSolution = (s) => {
+  const dp = new Map();
+
+  dp.set(s.length, 1);
+
+  const dfs = (idx) => {
+    if (idx in dp) return dp.get(idx);
+
+    if (s[idx] === "0") return 0;
+    const res = dfs(idx + 1);
+    if (
+      (idx + 1 < s.length && s[idx] === "1") ||
+      (s[idx] === "2" && s[idx + 1].includes("0123456"))
+    ) {
+      res += dfs(idx + 2);
+    }
+    dp.set(idx, res);
+    return res;
+  };
+  return dfs(0);
+};
+
+console.log(dpSolution(0));

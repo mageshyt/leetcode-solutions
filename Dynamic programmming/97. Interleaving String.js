@@ -33,27 +33,8 @@ const isInterleave = (s1, s2, s3) => {
   if (s1_len + s2_len !== s3_len) return false;
   if (s1_len === 0 && s2_len === 0 && s3_len === 0) return true;
 
-  const table = new Array(s1_len + 1)
-    .fill(0)
-    .map(() => new Array(s2_len + 1).fill(false));
 
-  for (let i = 0; i < s1_len; i++) {
-    for (let j = 0; j < s2_len; j++) {
-      if (i === 0 && j === 0) {
-        table[i][j] = true;
-      } else if (i === 0) {
-        table[i][j] = table[i][j - 1] && s2[j - 1] === s3[i + j - 1];
-      } else if (j === 0) {
-        table[i][j] = table[i - 1][j] && s1[i - 1] === s3[i + j - 1];
-      } else {
-        table[i][j] =
-          (table[i][j - 1] && s2[j - 1] === s3[i + j - 1]) ||
-          (table[i - 1][j] && s1[i - 1] === s3[i + j - 1]);
-      }
-    }
-  }
-  console.log(table);
-  return table[s1_len][s2_len];
+  console.log(dp);
 };
 
 console.log(isInterleave("aabcc", "dbbca", "aadbbcbcac"));
