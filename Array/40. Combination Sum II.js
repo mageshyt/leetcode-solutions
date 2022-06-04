@@ -26,5 +26,24 @@ Output:
 ]`;
 
 const combinationSum2 = (candidates, target) => {
-    
-}
+  const result = [];
+  candidates.sort((a, b) => a - b);
+  const helper = (candidates, target, temp, index) => {
+    if (target === 0) {
+      result.push([...temp]);
+      return;
+    }
+    if (target <= 0) return;
+    let prev = Number.MAX_SAFE_INTEGER;
+    for (let i = index; i < candidates.length; i++) {
+      if (candidates[i] === prev) continue;
+      prev = candidates[i];
+      temp.push(candidates[i]);
+      helper(candidates, target - candidates[i], temp, i + 1);
+      temp.pop();
+    }
+  };
+  helper(candidates, target, [], 0);
+  return result;
+};
+console.log(combinationSum2([2, 5, 2, 1, 2], 5));

@@ -20,7 +20,7 @@ const letterCasePermutation = (s) => {
       res.push(str);
       return;
     }
-    //! if it is not letter
+    //! if it is a letter
     if (s[index].match(/[a-zA-Z]/)) {
       backtracking(str + s[index].toUpperCase(), index + 1);
       backtracking(str + s[index].toLowerCase(), index + 1);
