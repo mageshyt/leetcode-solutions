@@ -31,8 +31,7 @@ const longestPalindrome = (s) => {
     `
     example:
     abccccdd
-     here a --> 1 and if we do 1/2 * 2 then we get 2 
-     next if case will work if we have even number of char 
+     here a --> 1 and if we do 1/2 * 2 then we get 2 next if case will work if we have even number of char 
     
     `;
     if (max_length % 2 === 0 && value % 2 === 1) {
