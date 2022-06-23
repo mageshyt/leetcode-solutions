@@ -33,7 +33,7 @@ const isIsomorphic = (s, t) => {
       return false;
     }
   }
-  // console.log(map);
+  console.log(map, map2);
   for (let i = 0; i < t.length; i++) {
     if (map.get(s[i]) !== t[i]) {
       return false;
