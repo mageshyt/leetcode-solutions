@@ -24,4 +24,5 @@ const isUgly = (num) => {
   }
   return num === 1;
 };
+
 console.log(isUgly(6));

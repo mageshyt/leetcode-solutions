@@ -17,6 +17,7 @@ Output: false
 `;
 
 const checkPerfectNumber = (num) => {
+  
   if (num <= 1) return false;
   let sum = 1;
   const end = Math.floor(Math.sqrt(num));
