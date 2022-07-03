@@ -21,7 +21,15 @@ const minCostClimbingStairs = (cost) => {
   table[1] = 0;
   for (let i = 2; i <= cost.length; i++) {
     table[i] = Math.min(table[i - 1] + cost[i - 1], table[i - 2] + cost[i - 2]);
+    console.log({
+      1: table[i - 1],
+      2: table[i - 2],
+      cost1: cost[i - 1],
+      cost2: cost[i - 2],
+    });
   }
+  console.log(table);
+
   return table[cost.length];
 };
 
@@ -39,4 +47,4 @@ const minCostClimbingStairs2 = (cost) => {
   };
   return Math.min(helper(length - 1), helper(length - 2));
 };
-console.log(minCostClimbingStairs2([10, 15, 20]));
+console.log(minCostClimbingStairs([10, 15, 20]));
