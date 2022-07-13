@@ -29,7 +29,6 @@ const threeSum = (nums) => {
     let right = nums.length - 1;
     while (left < right) {
       const sum = curr + nums[left] + nums[right];
-
       if (sum === 0) {
         //! if our target is founded then push it to the ans array
         ans.push([curr, nums[left], nums[right]]);
@@ -39,6 +38,7 @@ const threeSum = (nums) => {
           left++;
         }
       }
+
       if (sum < 0) {
         left++;
       } else {

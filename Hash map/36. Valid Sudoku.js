@@ -37,41 +37,32 @@ Input: board =
 ,[".",".",".",".","8",".",".","7","9"]]
 Output: false
 Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.`;
-const isValid = (set) => {
-  const arr = Array.from(set);
-  const len = arr.length;
-  if (len === 0) return true;
-  if (len === 1) return true;
-  if (len === 2) return arr[0] + arr[1] === 10;
-  if (len === 3) return arr[0] + arr[1] + arr[2] === 15;
-
-  return false;
-};
 
 const isValidSudoku = (board) => {
-  const rows = new Array(9).fill(0).map(() => new Set());
-  const cols = new Array(9).fill(0).map(() => new Set());
-  const boxes = new Array(9).fill(0).map(() => new Set());
-  for (let i = 0; i < 9; i++) {
-    for (let j = 0; j < 9; j++) {
-      const num = board[i][j];
-      if (num !== ".") {
-        const boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
-        rows[i].add(num);
-        cols[j].add(num);
-        boxes[boxIndex].add(num);
-      }
+  const rows = new Map();
+  const cols = new Map();
+  const boxes = new Map(); //! key will be row/3 and col /3
+
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      if (board[r][c] === ".") continue;
+      const key = `${board[r][c]}`;
+      const key2 = `${Math.floor(r / 3)}${Math.floor(c / 3)}`;
+    
+      //! check in 3 x 3 box
+      const box = boxes.get(key2);
+      if (box && box.has(key)) return false;
+
+      rows.set(key, true);
+      cols.set(key, true);
+      if (!box) boxes.set(key2, new Set([key]));
+      else box.add(key);
     }
-  }
-  for (let i = 0; i < 9; i++) {
-    if (!isValid(rows[i])) return false;
-    if (!isValid(cols[i])) return false;
-    if (!isValid(boxes[i])) return false;
   }
   return true;
 };
 const board = [
-  ["8", "3", ".", ".", "7", ".", ".", ".", "."],
+  ["5", "3", ".", ".", "7", ".", ".", ".", "."],
   ["6", ".", ".", "1", "9", "5", ".", ".", "."],
   [".", "9", "8", ".", ".", ".", ".", "6", "."],
   ["8", ".", ".", ".", "6", ".", ".", ".", "3"],

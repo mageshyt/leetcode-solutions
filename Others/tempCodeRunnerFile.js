@@ -1,2 +1,1 @@
-
-dayOfYear(date);
+len
