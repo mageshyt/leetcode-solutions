@@ -73,3 +73,45 @@ const grid = [
 ];
 
 console.log(maxAreaOfIsland(grid));
+
+const solution = (grid) => {
+  const rows = grid.length;
+  const cols = grid[0].length;
+
+  const visited = new Map();
+
+  const dfs = (row, col, area = 1) => {
+    const key = `${row}-${col}`;
+    if (visited.has(key)) return 0;
+    visited.set(key, true);
+
+    if (
+      row >= rows ||
+      row < 0 ||
+      col >= cols ||
+      col < 0 ||
+      grid[row][col] === 0
+    )
+      return 0;
+    for (let [x, y] of directions) {
+      const newRow = row + x;
+      const newCol = col + y;
+      area += dfs(newRow, newCol);
+    }
+    return area;
+  };
+
+  let max_area = 0;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] === 1) {
+        const area = dfs(r, c);
+        max_area = Math.max(max_area, area);
+      }
+    }
+  }
+  return max_area;
+};
+
+console.log(solution(grid));
