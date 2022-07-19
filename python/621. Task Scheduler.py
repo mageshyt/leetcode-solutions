@@ -59,6 +59,8 @@ class Solution:
 
 
 
+
+
 if __name__=='__main__':
     s=Solution()
     tasks=["A","A","A","B","B","B"]
