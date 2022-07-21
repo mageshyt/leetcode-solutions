@@ -29,7 +29,6 @@ const kInversePairs = (n, k) => {
     }
     dp = temp;
   }
-
   return (dp[k] + mod - (k > 0 ? dp[k - 1] : 0)) % mod;
 };
 
