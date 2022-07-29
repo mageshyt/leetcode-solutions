@@ -16,34 +16,38 @@ Input: s = "dsahjpjauf", words = ["ahjpjau","ja","ahbwzgqnuk","tnmlanowax"]
 Output: 2
 `;
 
-const numMatchingSubseq = (words, s) => {
-  const map = new Map();
-
-  for (let char of s) {
-    map.set(char, (map.get(char) + 1) | 1);
+const numMatchingSubseq = (s, words) => {
+  const map = {};
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (map[char]) {
+      map[char].push(i);
+    } else {
+      map[char] = [i];
+    }
   }
+
+  const isSubsequence = (word, map) => {
+    let flag = -1;
+    for (let char of word) {
+      flag = map[char]?.find((i) => i > flag);
+      if (flag === undefined) return false; //! if the char not found then return false
+    }
+
+    return true;
+  };
+
+  // ! loop thourgh the words
   let count = 0;
   for (let word of words) {
-    const temp_map = map;
-    let flag = true;
-    for (let char of word) {
-      if (!temp_map.has(char)) {
-        flag = false;
-      }
-      if (temp_map.get(char) >= 0) {
-        temp_map.set(char, map.get(char) - 1);
-      } else {
-        flag = false;
-        break;
-      }
-    }
-    if (flag) {
+    if (isSubsequence(word, map)) {
       count++;
     }
   }
+
   return count;
 };
-let s = "abcde";
-let words = ["a", "bb", "acd", "ace"];
 
+s = "abcde";
+words = ["a", "bb", "acd", "ace"];
 console.log(numMatchingSubseq(words, s));

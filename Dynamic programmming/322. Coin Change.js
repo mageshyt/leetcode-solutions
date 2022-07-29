@@ -22,15 +22,17 @@ Output: 0`;
 
 const coinChange = (coins, amount) => {
   const table = new Array(amount + 1).fill(amount + 1);
+
   table[0] = 0;
   for (let i = 1; i <= amount; i++) {
     for (let val of coins) {
       if (i - val >= 0) {
         table[i] = Math.min(table[i], table[i - val] + 1);
+
       }
     }
     console.log(table);
-  }
+  }k
   return table[amount] === amount + 1 ? -1 : table[amount];
 };
 console.log(coinChange([1, 2, 5], 11));

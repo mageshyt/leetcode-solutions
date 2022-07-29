@@ -76,8 +76,10 @@ var climbStairs = function (n) {
 const RobTheBob2 = (nums) => {
   if (nums.length == 1) return nums[0];
   const rob_amt = new Array(nums.length + 1).fill(0);
+
   rob_amt[0] = nums[0];
   rob_amt[1] = Math.max(nums[0], nums[1]);
+  
   for (let i = 2; i < nums.length; i++) {
     rob_amt[i] = Math.max(rob_amt[i - 1], rob_amt[i - 2] + nums[i]);
   }
