@@ -1,1 +1,1 @@
-nums
+.log(sum);
