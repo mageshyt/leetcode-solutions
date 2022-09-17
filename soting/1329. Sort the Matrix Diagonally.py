@@ -25,10 +25,7 @@ console.log(
     [1, 1, 1, 2],
   ])
 );'''
-
-
 from collections import defaultdict
-
 
 class Solution:
     def diagonalSort(self, mat )  :

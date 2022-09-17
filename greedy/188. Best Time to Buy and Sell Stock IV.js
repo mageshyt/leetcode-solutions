@@ -16,21 +16,23 @@ Example 2:
 Input: k = 2, prices = [3,2,6,5,0,3]
 Output: 7
 Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.`;
-
 const maxProfit = (prices, k) => {
-  let maxProfit = [];
-  for (let i = 1; i < prices.length; i++) {
-    const buy = prices[i];
-    const sell = prices[i - 1];
-    const profit = buy - sell;
-
-    if (k > 0 && profit > 0) {
-      maxProfit.push(profit);
-      k--;
+  if (k === 0) return 0; // ! if no prices or no transactions then return 0
+  const profits = new Array(k + 1).fill([Number.MAX_SAFE_INTEGER, 0]); // ! dp[1][0] = min price, dp[1][1] = max profit
+  console.log(profits);
+  for (let price of prices) {
+    for (let i = 1; i <= k; i++) {
+      const [minPrice, maxProfit] = profits[i];
+      profits[i] = [
+        Math.min(minPrice, price - profits[i - 1][1]),
+        Math.max(maxProfit, price - minPrice),
+      ];
     }
   }
-  return maxProfit.reduce((a, b) => a + b, 0);
+
+  return profits[k][1];
 };
 
 console.log(maxProfit([2, 4, 1], 2));
 console.log(maxProfit([3, 2, 6, 5, 0, 3], 2));
+console.log(maxProfit([3, 3, 5, 0, 0, 3, 1, 4], 2));
