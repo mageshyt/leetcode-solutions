@@ -24,20 +24,25 @@ Input: candidates = [2], target = 1
 Output: []`;
 const combinationSum = (target, candidates) => {
   candidates.sort((a, b) => a - b);
+
   const result = [];
+
   const helper = (target, candidates, path, res) => {
     if (target === 0) {
-      res.push(path);
+      res.append(path);
     }
     for (let i = 0; i < candidates.length; i++) {
       if (target < candidates[i]) return;
+
       const newTarget = target - candidates[i];
+
       const newPath = [...path, candidates[i]];
       helper(newTarget, candidates.slice(i), newPath, result);
     }
   };
   const path = [];
   helper(target, candidates, path, result);
+
   return result;
 };
 console.log(combinationSum(7, [2, 3, 6, 7]));
