@@ -37,3 +37,10 @@ const findFirstAndLastPosition = (nums, target) => {
 };
 
 console.log(findFirstAndLastPosition([5, 7, 7, 8, 8, 10], 8));
+
+
+
+
+
+
+

@@ -38,3 +38,28 @@ const lengthOfLIS = (nums) => {
 console.log(lengthOfLIS([1, 3, 5, 4, 7]));
 
 console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]));
+
+//! brute force
+
+const bruteForce = (nums) => {
+  let res = 1;
+
+  for (let i = 0; i < nums.length; i++) {
+    let count = 1;
+    let max = nums[i];
+    for (let j = i + 1; j < nums.length; j++) {
+      if (max < nums[j]) {
+        max = nums[j];
+        count++;
+      }
+    }
+
+    res = Math.max(count, res);
+  }
+  return res;
+};
+
+// console.log(bruteForce([1, 3, 5, 4, 7]));
+
+// console.log(bruteForce([7, 7, 7, 7, 7, 7, 7]));
+console.log(bruteForce([10, 9, 2, 5, 3, 7, 101, 18]));
