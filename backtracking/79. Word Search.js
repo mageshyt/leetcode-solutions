@@ -33,31 +33,42 @@ const exist = (board, word) => {
   const rows = board.length;
   const cols = board[0].length;
   const visited = new Map();
-  const dfs = (row, col, index) => {
-    if (index === word.length) {
-      return true;
-    }
-    const key = `${row}-${col}`;
-    if (
-      row < 0 ||
-      row >= rows ||
-      col < 0 ||
-      col >= cols ||
-      board[row][col] !== word[index] ||
-      visited.get(key)
-    )
-      return false;
-    visited.set(key, true);
-    //! going to all the directions to check if the word exists
-    const res =
-      dfs(row + 1, col, index + 1) ||
-      dfs(row - 1, col, index + 1) ||
-      dfs(row, col + 1, index + 1) ||
-      dfs(row, col - 1, index + 1);
 
-    visited.delete(key);
-    return res;
+  const dfs = (row, col, index) => {
+    // base case
+    if (index === word.length) return true;
+
+    // check if the current cell is out of bounds or if the current cell is not equal to the current letter in the word
+
+    //! case one  - out of bounds for row
+
+    if (row < 0 || row >= rows) return false;
+
+    //! case two - out of bounds for col
+
+    if (col < 0 || col >= cols) return false;
+
+    //! case three - the current cell is not equal to the current letter in the word
+
+    if (board[row][col] !== word[index]) return false;
+
+    // check if the current cell has been visited before
+    if (visited.has(`${row}-${col}`)) return false;
+
+    // mark the current cell as visited
+    visited.set(`${row}-${col}`, true);
+    // explore the neighbors of the current cell
+    let result;
+    for (const [rowOffset, colOffset] of directions) {
+      const nextRow = row + rowOffset;
+      const nextCol = col + colOffset;
+      result = dfs(nextRow, nextCol, index + 1);
+    }
+    //! remove
+    visited.delete(`${row}-${col}`);
+    return result;
   };
+
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       if (dfs(i, j, 0)) {
@@ -67,14 +78,10 @@ const exist = (board, word) => {
   }
   return false;
 };
-
-console.log(
-  exist(
-    [
-      ["A", "B", "C", "E"],
-      ["S", "F", "C", "S"],
-      ["A", "D", "E", "E"],
-    ],
-    "ABCCED"
-  )
-);
+(board = [
+  ["A", "B", "C", "E"],
+  ["S", "F", "C", "S"],
+  ["A", "D", "E", "E"],
+]),
+  (word = "SEE");
+console.log(exist(board, "ABCPED"));

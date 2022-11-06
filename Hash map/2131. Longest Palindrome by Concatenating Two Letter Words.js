@@ -29,29 +29,29 @@ Note that "ll" is another longest palindrome that can be created, and so is "xx"
 `;
 
 const longestPalindrome = (words) => {
-  const map = new Map();
+  const map = {};
   let len = 0;
 
   // ! find mirror word alone form the words
   for (let word of words) {
     const mirror = reverse(word);
-    if (map.has(word)) {
-      len += 4;
+    if (map[word]) {
       // mins the count
-      map.set(mirror, map.get(mirror) - 1);
+      map[word]--;
+      len += 4;
     } else {
-      map.set(mirror, map.get(mirror) + 1 || 1);
+      map[mirror] = map[mirror] ? map[mirror] + 1 : 1;
     }
   }
-  const morePal = [...map.keys()].filter(
-    (word) => map.has(word) && reverse(word) == word
+  const morePal = Object.keys(map).filter(
+    (word) => map[word] && reverse(word) === word
   );
   // ! if we have any values then add 2 to counter
-  if (morePal) len += 2;
+  if (morePal.length) len += 2;
   return len;
 };
 const reverse = (word) => word.split("").reverse().join("");
 
 console.log(longestPalindrome(["lc", "cl", "gg"]));
 console.log(longestPalindrome(["ab", "ty", "yt", "lc", "cl", "ab"]));
-console.log(longestPalindrome(["cc", "ll", "xx"]));
+console.log(longestPalindrome(["cc", "cc"]));
