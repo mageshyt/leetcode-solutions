@@ -44,6 +44,7 @@ const maximum69Number = (num) => {
         numArray[index] = temp;
       }
     } else if (numArray[index] == 9) {
+      
       let temp = numArray[index];
       numArray[index] = 6;
       if (Number(numArray.join("")) > res && count_9 > 0) {
