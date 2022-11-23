@@ -29,10 +29,11 @@ const tree = [
 
 const outerTrees = (trees: number[][]) => {
   trees.sort((a, b) => (a[0] - b[0] == 0 ? a[1] - b[1] : a[0] - b[0])); // sort by x, then y
-  const slopes = ([x1, y1], [x2, y2], [x3, y3]) =>
+  const slopes = ([x1, y1]: any, [x2, y2]: any, [x3, y3]: any) =>
     (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1);
-  const higher = []; // upper hull
-  const lower = []; // lower hull
+
+  const higher: any = []; // upper hull
+  const lower: any = []; // lower hull
 
   for (let point of trees) {
     while (
