@@ -18,6 +18,7 @@ Constraints:
     1 <= numRows <= 30
 `;
 const generate = (numRows) => {
+
   const result = [];
   for (let i = 0; i < numRows; i++) {
     result.push([]);
