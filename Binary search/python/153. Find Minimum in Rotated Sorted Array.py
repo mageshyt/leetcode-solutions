@@ -23,16 +23,19 @@ Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
 '''
 
 
-import re
-
-
 class Solution:
-    def findMin(self, num ):
-        if len(num) <=1: return num[0]
+    def findMin(self, num):
+
+        if len(num) <= 1:
+            return num[0]
+
         left, right = 0, len(num)-1
-        if num[left] < num[right]: return num[0]
+
+        if num[left] < num[right]:
+            return num[0]
+
         while left < right:
-            mid=(left+right)//2
+            mid = (left+right)//2
 
             # check mid val is greater than mid+1 val
             if num[mid] > num[mid+1]:
@@ -48,8 +51,36 @@ class Solution:
                 right = mid-1
         return num[left]
 
+    def mySolution(self, nums):
+        if len(nums) == 1:
+            return nums[0]
+        left = 0
+        right = 0
+
+        # base case 1  if left value if less than right means then left is min of all
+
+        if nums[left] < nums[right]:
+            return nums[left]
+
+        while left <= right:
+            mid = (left+right)//2
+
+            # if mid_value is > than mid next value then we have to move the left point
+
+            if nums[mid] > nums[mid+1]:
+                return nums[mid+1]
+            elif nums[mid] < nums[mid-1]:
+                return nums[mid]
+
+            elif nums[mid] < nums[left]:
+                # if mid is less than mid next mean then we have to move the left point next to it
+                left = mid+1
+
+            elif nums[mid] < nums[right]:
+                right = mid - 1
+        return nums[left]
 
 
 if __name__ == '__main__':
-    num = [2,3,4,5,1]
+    num = [2, 3, 4, 5, 1]
     print(Solution().findMin(num))
