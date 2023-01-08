@@ -16,6 +16,7 @@ Explanation: The array cannot be partitioned into equal sum subsets.'''
 
 class Solution:
     def canPartition(self, nums: list) -> bool:
+
         # if sum is not even then return false because we cant partition it
         if sum(nums) % 2 != 0:
             return False

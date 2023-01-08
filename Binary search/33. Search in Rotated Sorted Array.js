@@ -22,10 +22,35 @@ Input: nums = [1], target = 0
 Output: -1`;
 
 const search = (nums, target) => {
-  let l = 0;
-  while (l < nums.length) {
-    if (nums[l] === target) return l;
-    l++;
+  
+  let left=0;
+  let right=nums.length-1;
+
+  while(left<=right){
+    const mid=Math.floor((left+right)/2);
+    // ! if mid is target then return mid
+    if(nums[mid]===target) return mid;
+
+    // ! if left is sorted
+    if(nums[left]<=nums[mid]){
+      // if target is greater than mid 
+      if (target > nums[mid] || target < nums[left]){
+        left=mid+1;
+      }
+      else{
+        right=mid-1;
+      }
+
+    }
+    // ! if right is sorted
+    else{
+      if(target < nums[mid] || target > nums[right]){
+        right=mid-1;
+      }
+      else{
+        left=mid+1;
+      }
+    }
   }
   return -1;
 };
