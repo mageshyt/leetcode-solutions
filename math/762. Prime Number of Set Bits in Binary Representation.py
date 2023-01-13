@@ -53,5 +53,3 @@ class Solution:
             if is_prime(bin(i).count('1')):
                 count += 1
         return count
-
-

@@ -11,6 +11,7 @@ class Solution:
             prefix_sum *= num
 
         suffix_sum = 1
+        print(res)
 
         for i in range(len(nums)-1, -1, -1):
             res[i] *= suffix_sum
