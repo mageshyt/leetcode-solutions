@@ -32,7 +32,8 @@ const twoSum = (numbers, target) => {
     if (left_right_sum === target) {
       return [left + 1, right + 1];
     }
-    //! if our target is greater than the sum of the left and right numbers, we need to move the left pointer to the right
+    //! if our target is greater than the sum of the left and right numbers,
+    // we need to move the left pointer to the right
     else if (left_right_sum < target) {
       left++;
     }

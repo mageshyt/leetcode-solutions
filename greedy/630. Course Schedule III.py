@@ -25,8 +25,6 @@ Example 3:
 Input: courses = [[3,2],[4,3]]
 Output: 0'''
 
-
-from calendar import c
 import heapq
 
 

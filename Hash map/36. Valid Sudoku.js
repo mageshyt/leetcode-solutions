@@ -39,24 +39,23 @@ Output: false
 Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.`;
 
 const isValidSudoku = (board) => {
-  const rows = new Map();
-  const cols = new Map();
-  const boxes = new Map(); //! key will be row/3 and col /3
+  const row = new Array(9).fill(0).map(() => new Set());
+  const col = new Array(9).fill(0).map(() => new Set());
+  const box = new Array(9).fill(0).map(() => new Set());
 
-  for (let r = 0; r < 9; r++) {
-    for (let c = 0; c < 9; c++) {
-      if (board[r][c] === ".") continue;
-      const key = `${board[r][c]}`;
-      const key2 = `${Math.floor(r / 3)}${Math.floor(c / 3)}`;
-    
-      //! check in 3 x 3 box
-      const box = boxes.get(key2);
-      if (box && box.has(key)) return false;
-
-      rows.set(key, true);
-      cols.set(key, true);
-      if (!box) boxes.set(key2, new Set([key]));
-      else box.add(key);
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const num = board[i][j];
+      if (num !== ".") {
+        const boxIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3);
+        
+        if (row[i].has(num) || col[j].has(num) || box[boxIndex].has(num)) {
+          return false;
+        }
+        row[i].add(num);
+        col[j].add(num);
+        box[boxIndex].add(num);
+      }
     }
   }
   return true;

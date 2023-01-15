@@ -27,3 +27,24 @@ const longestCommonSubsequence = (str1, str2) => {
 };
 
 console.log(longestCommonSubsequence("sea", "eat"));
+
+const solution2 = (str1, str2) => {
+  const dp = new Array(str2.length + 1)
+    .fill(0)
+    .map(() => new Array(str1.length + 1).fill(0));
+
+  //! top down solution
+  const helper = (i, j) => {
+    if (i === str1.length || j === str2.length) return 0;
+    if (dp[j][i] !== 0) return dp[j][i];
+    if (str1[i] === str2[j]) {
+      dp[j][i] = helper(i + 1, j + 1) + 1;
+    } else {
+      dp[j][i] = Math.max(helper(i + 1, j), helper(i, j + 1));
+    }
+    return dp[j][i];
+  };
+  return helper(0, 0);
+};
+
+console.log(solution2("sea", "eat"));

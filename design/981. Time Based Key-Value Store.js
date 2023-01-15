@@ -1,4 +1,5 @@
-`Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+`Design a time-based key-value data structure that can 
+store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
 
 Implement the TimeMap class:
 
@@ -48,15 +49,19 @@ class TimeMap {
     if (!this.map.has(key)) return "";
     //! if the key is in the map, return the value
     let arr = this.map.get(key);
-    console.log("arr", arr);
+
     let left = 0;
     let right = arr.length - 1;
     while (left <= right) {
+
       let mid = Math.floor((left + right) / 2);
+
       if (arr[mid][1] === timestamp) return arr[mid][0];
+
       if (arr[mid][1] < timestamp) {
         left = mid + 1;
-      } else {
+      }
+      else {
         right = mid - 1;
       }
     }

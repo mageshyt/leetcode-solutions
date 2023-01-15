@@ -34,5 +34,6 @@ const isBalanced = (root) => {
     return Math.max(left, right) + 1;
   };
   postorderRecursive(root);
-  return flag;
+  return flag ;
 };
+
