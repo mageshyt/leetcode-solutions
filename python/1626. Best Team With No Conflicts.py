@@ -13,7 +13,7 @@ Output: 34
 Explanation: You can choose all the players.
 '''
 
-
+ 
 class Solution:
     def bestTeamScore(self, scores, ages) -> int:
         players = sorted(zip(ages, scores))
