@@ -24,7 +24,10 @@
     "ignorePaths": [],
     "dictionaryDefinitions": [],
     "dictionaries": [],
-    "words": [],
+    "words": [
+      "ABABAB",
+      "ABCABC"
+    ],
     "ignoreWords": [],
     "import": []
   }

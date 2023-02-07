@@ -27,6 +27,7 @@ const isSorted = (word1, word2, order) => {
   }
   return word1.length < word2.length ? true : false;
 };
+
 const isAlienSorted = (words, order) => {
   for (let i = 0; i < words.length - 1; i++) {
     const word1 = words[i];
