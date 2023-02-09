@@ -12,7 +12,7 @@ class Solution:
         right = 0  # right pointer
 
         while (right < len(nums)-1):
-            farthest = 0 # farthest we can reach from the current position
+            farthest = 0  # farthest we can reach from the current position
 
             for i in range(left, right+1):
                 # calculate the farthest we can reach from the current position
