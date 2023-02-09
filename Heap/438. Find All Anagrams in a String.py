@@ -32,13 +32,21 @@ import collections
 
 class Solution:
     def findAnagrams(self, s: str, p: str) :
+        # base case
         if len(s) < len(p):return []
+
+
         p_counter=collections.Counter(p) # this is help to store the count of each char in p
         s_counter=collections.Counter(s[0: len(p)]) # this is help to store the count of each char in s
-        result = []
+
+        result = [] 
+
+
         if s_counter == p_counter:
             result.append(0)
         windowStart=0
+
+
         for window_end in range(len(p), len(s)):
             curr=s[window_end]
             s_counter[curr]=s_counter.get(curr,0)+1
@@ -47,6 +55,7 @@ class Solution:
             if s_counter[s[windowStart]]==0:
                 s_counter.pop(s[windowStart])
             # move the window
+
             windowStart+=1
             # if the window is equal to the p, we have a match
             if s_counter == p_counter:
