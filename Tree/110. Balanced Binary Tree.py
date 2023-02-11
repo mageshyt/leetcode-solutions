@@ -21,43 +21,47 @@ Example 3:
 Input: root = []
 Output: true'''
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
+
 class Solution:
-    def isBalanced(self, root ) -> bool:
+    def isBalanced(self, root) -> bool:
 
         if not root:
             return True
 
         def dfs(node):
+            # base case
             if not node:
                 return 0
 
-            left=dfs(node.left) # 1 1 2 
-            right=dfs(node.right) # 1 
+            # recursive case
+            left = dfs(node.left)  # left height
+            right = dfs(node.right)  # right height
 
-            if left==-1 or right==-1 or abs(left-right)>1:
+            # if left or right is -1 then return -1 because we already know that tree is not balanced
+            if left == -1 or right == -1 or abs(left-right) > 1:
                 return -1
 
-            return max(left,right)+1
+            return max(left, right) + 1
 
-        return dfs(root)!=-1
+        return dfs(root) != -1
 
 
-node1=TreeNode(1)
-node2=TreeNode(2)
-node3=TreeNode(3)
-node4=TreeNode(4)
+node1 = TreeNode(1)
+node2 = TreeNode(2)
+node3 = TreeNode(3)
+node4 = TreeNode(4)
 
-node1.left=node2
-node1.right=node3
+node1.left = node2
+node1.right = node3
 
-node2.left=node4
-
+node2.left = node4
 
 
 if __name__ == "__main__":
