@@ -22,6 +22,7 @@ const replaceWords = (dictionary, sentence) => {
   }
 
   const res = [];
+
   for (let word of sentence.split(" ")) {
     let temp = word;
     for (let [word, length] of map) {
