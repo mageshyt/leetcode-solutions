@@ -35,19 +35,24 @@ const longestPalindrome = (words) => {
   // ! find mirror word alone form the words
   for (let word of words) {
     const mirror = reverse(word);
+    console.log({ mirror, map });
     if (map[word]) {
       // mins the count
       map[word]--;
-      len += 4;
+      len += 4; // because we have 2 words that can make a palindrome
     } else {
+      // ! if we dont have the mirror word then add it to the map and set the count to 1
       map[mirror] = map[mirror] ? map[mirror] + 1 : 1;
     }
   }
+
   const morePal = Object.keys(map).filter(
     (word) => map[word] && reverse(word) === word
   );
+
   // ! if we have any values then add 2 to counter
   if (morePal.length) len += 2;
+
   return len;
 };
 const reverse = (word) => word.split("").reverse().join("");
