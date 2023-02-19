@@ -64,6 +64,21 @@ class Solution:
         pows = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512,
                 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 
+        operations = 0  # number of operations
+
+        # loop will run until n is not equal to 0
+        while n:
+
+            # find the difference between n and each power of 2
+            temp = [abs(n-i) for i in pows]
+
+            # find the minimum difference
+            n = min(temp)
+
+            operations += 1  # increment the number of operations
+
+        return operations
+
 
 s = Solution()
 print(s.minOperations(39))
