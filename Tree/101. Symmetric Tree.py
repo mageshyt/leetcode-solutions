@@ -26,5 +26,3 @@ class Solution:
             return (root1.val == root2.val) and isMirror(root1.left, root2.right) and isMirror(root1.right, root2.left)
 
         return isMirror(root, root)
-
-            
