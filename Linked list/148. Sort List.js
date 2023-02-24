@@ -38,6 +38,8 @@ const sortList = (head) => {
     }
     return slow;
   };
+
+
   const MergeSort = (list_1, list_2) => {
     let dummy = new ListNode();
     let tail = new ListNode();
@@ -55,6 +57,9 @@ const sortList = (head) => {
     if (list_2) tail.next = list_2;
     return dummy.next;
   };
+
+
+  
   //! now lets merge the left and right
   return Merge(left, right);
 };
