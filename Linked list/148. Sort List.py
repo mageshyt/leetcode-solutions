@@ -36,9 +36,9 @@ class Solution:
         return self.merge(l, r)
 
     def merge(self, left, right):
-        if  left is None :
+        if left is None:
             return right
-        elif right is None :
+        elif right is None:
             return left
 
         dummy = ListNode(0)  # dummy pointer
