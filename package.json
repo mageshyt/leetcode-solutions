@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "<img src='https://leetcode.com/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png'/> `Leetcode`",
   "main": "buckets.js",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,7 +28,8 @@
     "words": [
       "ABABAB",
       "ABCABC",
-      "dont"
+      "dont",
+      "subarrays"
     ],
     "ignoreWords": [],
     "import": []
