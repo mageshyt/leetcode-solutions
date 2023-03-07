@@ -43,7 +43,6 @@ class Solution:
             if word_map[word] > 0:
                 # if it is there then decrement the count
                 word_map[word] -= 1
-
                 max_len += 4
             else:
                 word_map[reverse] += 1  # increment the count of the word
