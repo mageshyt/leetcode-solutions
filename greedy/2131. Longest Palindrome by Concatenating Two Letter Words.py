@@ -46,8 +46,7 @@ class Solution:
                 max_len += 4
             else:
                 word_map[reverse] += 1  # increment the count of the word
-        print(word_map)
-        more_palindrome = []
+        more_palindrome = [] 
 
         for word, count in word_map.items():
             # if word is self palindrome
