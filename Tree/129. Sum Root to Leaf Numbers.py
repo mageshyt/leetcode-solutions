@@ -31,25 +31,23 @@ Therefore, sum = 495 + 491 + 40 = 1026.
 """
 
 from collections import deque
+
+
 class Solution:
-    def sumNumbers(self, root ) -> int:
-        total_mark, queues= 0, deque([(root, 0)])
+    def sumNumbers(self, root) -> int:
+        total_mark, queues = 0, deque([(root, 0)])
 
         while queues:
-            node, curr= queues.popleft()
-            curr= curr*10 + node.val
+            node, curr = queues.popleft()
+            curr = curr*10 + node.val
 
             if not node.left and not node.right:
-                total_mark+= curr
+                total_mark += curr
 
             if node.left:
                 queues.append((node.left, curr))
-            
+
             if node.right:
                 queues.append((node.right, curr))
 
         return total_mark
-    
-
-
-
