@@ -29,6 +29,7 @@
       "ABABAB",
       "ABCABC",
       "dont",
+      "mincost",
       "subarrays"
     ],
     "ignoreWords": [],
