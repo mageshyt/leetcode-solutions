@@ -1,2 +1,2 @@
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
+                diff = num - arr[num+1]
+                print(diff)
