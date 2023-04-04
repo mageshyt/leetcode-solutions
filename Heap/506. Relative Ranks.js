@@ -21,6 +21,12 @@ Input: score = [10,3,8,9,4]
 Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
 Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
 `;
+const { MaxHeap, MinHeap } = require("datastructures-js");
+
+const mHeap = new MinHeap();
+mHeap.insert(5);
+mHeap.insert(4);
+mHeap.insert(3);
 
 const findRelativeRanks = (scores) => {
   const medals = ["Gold Medal", "Silver Medal", "Bronze Medal"];

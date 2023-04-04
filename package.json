@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/mageshyt/leetcode-solutions#readme",
   "dependencies": {
-    "buckets-js": "^1.98.2"
+    "buckets-js": "^1.98.2",
+    "datastructures-js": "^12.0.0"
   },
   "cspell": {
     "version": "0.2",
@@ -27,7 +28,9 @@
     "words": [
       "ABABAB",
       "ABCABC",
-      "dont"
+      "dont",
+      "mincost",
+      "subarrays"
     ],
     "ignoreWords": [],
     "import": []

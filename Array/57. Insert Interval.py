@@ -37,7 +37,6 @@ class Solution:
         while i < len(intervals) and intervals[i][1] < newInterval[0]:
 
             i += 1
-        print(intervals[i])
 
         # merge the intervals 
         # loop through the intervals and check if the new interval start is < interval end
@@ -45,8 +44,8 @@ class Solution:
             newInterval[0] = min(
                 newInterval[0], intervals[i][0])  # min of start
             newInterval[1] = max(newInterval[1], intervals[i][1])  # max of end
-            print(newInterval, i, intervals[i])
             intervals.pop(i)
+            
         intervals.insert(i, newInterval)
 
         return intervals

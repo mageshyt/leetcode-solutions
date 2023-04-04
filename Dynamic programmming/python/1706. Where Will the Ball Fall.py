@@ -33,44 +33,47 @@ Example 3:
 Input: grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
 Output: [0,1,2,3,4,-1]
 '''
+
+
 class Solution:
-    def findBall(self, grid) :
-        
+    def findBall(self, grid):
+
         # idea
         # drop the ball and check at every row if they are stuck or not
 
         # constraints
-        # if c_next < 0 or c_next >= len(grid[0]) or grid[r][c_next] == -grid[r][c]: 
-        # means if next column is out of bound or if the next column is not equal to the current column then the ball is stuck 
+        # if c_next < 0 or c_next >= len(grid[0]) or grid[r][c_next] == -grid[r][c]:
+        # means if next column is out of bound or if the next column is not equal to the current column then the ball is stuck
 
-        rows=len(grid)
-        cols=len(grid[0])
-        ans=list(range(cols))
+        rows = len(grid)
+        cols = len(grid[0])
+        ans = list(range(cols))
 
         for r in range(rows):
-            # print('new \n')
+            print('new \n')
             for i in range(cols):
-                # print('ans = ',ans)
-                c=ans[i] # current column
-                if c ==-1:
-                    continue # if the ball is stuck then continue
+                print('ans = ', ans)
+                c = ans[i]  # current column
+                if c == -1:
+                    continue  # if the ball is stuck then continue
 
-                c_next=c+grid[r][c] # next column 
+                c_next = c+grid[r][c]  # next column
 
                 if c_next < 0 or c_next >= cols or grid[r][c_next] == -grid[r][c]:
 
                     # c next < 0 -> means the ball is stuck on the left wall
                     # c_next >= len(grid[0]) -> means the ball is stuck on the right wall
-                    # grid[r][c_next] == -grid[r][c] -> means the ball is stuck in the box \⚾/ [-1,1] or [1,-1] 
-                    ans[i]=-1
+                    # grid[r][c_next] == -grid[r][c] -> means the ball is stuck in the box \⚾/ [-1,1] or [1,-1]
+                    ans[i] = -1
                     continue
 
-                ans[i]+=grid[r][c] # if the ball is not stuck then move the ball to the next column
+                # if the ball is not stuck then move the ball to the next column
+                ans[i] += grid[r][c]
 
         return ans
 
 
-
 if __name__ == "__main__":
-    grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
+    grid = [[1, 1, 1, -1, -1], [1, 1, 1, -1, -1],
+            [-1, -1, -1, 1, 1], [1, 1, 1, 1, -1], [-1, -1, -1, -1, -1]]
     print(Solution().findBall(grid))

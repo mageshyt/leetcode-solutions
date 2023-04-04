@@ -17,6 +17,7 @@ const multiply = (num1, num2) => {
   let result = "";
   let i = num1.length - 1;
   let j = num2.length - 1;
+
   while (i >= 0 || j >= 0) {
     let sum = 0;
     let carry = 0;
@@ -36,6 +37,7 @@ const multiply = (num1, num2) => {
     i--;
     j--;
   }
+
   return result;
 };
 console.log(multiply("2", "3"));

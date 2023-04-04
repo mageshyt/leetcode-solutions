@@ -50,7 +50,6 @@ const calculate = (s) => {
       n = 0;
     }
 
-    console.log({ c, n, sign, stack });
   }
   return stack.reduce((a, b) => a + b);
 };

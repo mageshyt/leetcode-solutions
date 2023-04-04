@@ -43,12 +43,10 @@ class Solution:
             if word_map[word] > 0:
                 # if it is there then decrement the count
                 word_map[word] -= 1
-
                 max_len += 4
             else:
                 word_map[reverse] += 1  # increment the count of the word
-
-        more_palindrome = []
+        more_palindrome = [] 
 
         for word, count in word_map.items():
             # if word is self palindrome
@@ -64,11 +62,10 @@ class Solution:
 
         return s[::-1]
 
-
+ 
 if __name__ == "__main__":
     s = Solution()
-    print(s.longestPalindrome(["dd", "aa", "bb", "dd", "aa",
-          "dd", "bb", "dd", "aa", "cc", "bb", "cc", "dd", "cc"]))
-   
-   
+    # print(s.longestPalindrome(["dd", "aa", "bb", "dd", "aa",
+    #       "dd", "bb", "dd", "aa", "cc", "bb", "cc", "dd", "cc"]))
+
     print(s.longestPalindrome(["cc", "ll", "xx"]))
