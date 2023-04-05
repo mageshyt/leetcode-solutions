@@ -30,39 +30,37 @@ class Solution:
         self.memo = {}
 
     def isScramble(self, s1: str, s2: str) -> bool:
-
+        n = len(s1)
         # base case
 
         if (s1 == s2):
             return True
 
-        if (len(s1) == 1):
+        if (n == 1):
             return False
 
         if (s1, s2) in self.memo:
             return self.memo[(s1, s2)]
- 
+
         # split the string into two parts
 
-        for i in range(1, len(s1)):
+        for i in range(1, n):
 
-            for j in range(1, len(s2)):
+            # 1 . s1[:i] and s2[:j] are scrambled and s1[i:] and s2[j:] are scrambled
 
-                # 1 . s1[:i] and s2[:j] are scrambled and s1[i:] and s2[j:] are scrambled
+            # s1 left part and s2 left part are scrambled
+            # s1 right part and s2 right part are scrambled
+            if (self.isScramble(s1[:i], s2[:i]) and self.isScramble(s1[i:], s2[i:])):
+                self.memo[(s1, s2)] = True
+                return True
 
-                # s1 left part and s2 left part are scrambled
-                # s1 right part and s2 right part are scrambled
-                if (self.isScramble(s1[:i], s2[:j]) and self.isScramble(s1[i:], s2[j:])):
-                    self.memo[(s1, s2)] = True
-                    return True
+            # 2. s1[:i] and s2[-j:] are scrambled and s1[i:] and s2[:-j] are scrambled
 
-                # 2. s1[:i] and s2[-j:] are scrambled and s1[i:] and s2[:-j] are scrambled
-
-                # s1 left part and s2 right part are scrambled
-                # s1 right part and s2 left part are scrambled
-                if (self.isScramble(s1[:i], s2[-j:]) and self.isScramble(s1[i:], s2[:-j])):
-                    self.memo[(s1, s2)] = True
-                    return True
+            # s1 left part and s2 right part are scrambled
+            # s1 right part and s2 left part are scrambled
+            if (self.isScramble(s1[:i], s2[n-1:]) and self.isScramble(s1[i], s2[:n-i])):
+                self.memo[(s1, s2)] = True
+                return True
 
         self.memo[(s1, s2)] = False
         return False
