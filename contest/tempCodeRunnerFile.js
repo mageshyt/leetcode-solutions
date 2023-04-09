@@ -1,8 +1,5 @@
-console.log(longestContinuousSubstring("abacaba"));
-console.log(
-  longestContinuousSubstring(
-    "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-  )
-);
-
-console.log(longestContinuousSubstring("abcde"));
+  for (let i = 0; i < nums.length; i++) {
+    if (!adj.has(nums[i])) {
+      adj.set(nums[i], []);
+    }
+  }
