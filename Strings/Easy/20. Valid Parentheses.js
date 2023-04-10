@@ -77,7 +77,8 @@ var isValid = function (s) {
   }
 
   return !stack.length;
-  //   if (stack.length === 0) return true;
+
+  if (stack.length === 0) return true;
 };
 
 s = "([])";
