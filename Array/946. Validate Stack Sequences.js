@@ -14,6 +14,7 @@ pop() -> 4,
 push(5),
 pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1`;
 
+// today question
 const validateStackSequences = (pushed, popped) => {
   let stack = [];
   let i = 0;
