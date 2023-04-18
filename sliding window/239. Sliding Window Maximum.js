@@ -22,6 +22,7 @@ Example 2:
 Input: nums = [1], k = 1
 Output: [1]`;
 
+
 const maxSlidingWindow = (nums, k) => {
   const output = [];
   const deque = [];
@@ -46,6 +47,8 @@ const maxSlidingWindow = (nums, k) => {
     right++;
   }
   return output;
+
+
 };
 
 console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
@@ -71,3 +74,7 @@ const maxSlidingWindow2 = (nums, k) => {
 };
 
 console.log(maxSlidingWindow2([1, 3, -1, -3, 5, 3, 6, 7], 3));
+
+
+
+
