@@ -36,7 +36,7 @@ Constraints:
 '''
 
 from heapq import heapify
-import heapq
+import heapq 
 
 
 class Solution:
