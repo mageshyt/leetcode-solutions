@@ -1,3 +1,6 @@
+from math import comb
+
+
 class Solution:
     def numberOfGoodPaths(self, vals, edges) -> int:
 
