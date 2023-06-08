@@ -32,4 +32,4 @@ const uniquePaths = (m, n, hash = {}) => {
   return hash[key];
 };
 
-console.log(uniquePaths(3, 2));
+console.log(uniquePaths(3, 7));
