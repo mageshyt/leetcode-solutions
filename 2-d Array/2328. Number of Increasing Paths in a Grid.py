@@ -18,7 +18,7 @@ class Solution:
 
     def dfs(self, grid, dp, row, col):
 
-        # base case
+    # base case
         if (row < 0 or row >= len(grid) or col < 0 or col >= len(grid[0])):
             return 0
         mod = 10**9+7
