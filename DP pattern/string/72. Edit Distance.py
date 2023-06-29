@@ -49,6 +49,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    word1 = ""
-    word2 = "a"
+    word1 = "abc"
+    word2 = "yabd"
     print(Solution().minDistance(word1, word2))

@@ -16,7 +16,7 @@ class Solution:
         rows=len(s1)
         dp=[[0]* (cols+1) for _ in range(rows+1)]
 
-       
+
         for i in range(rows):
             for j in range(cols):
                 if s1[i]==s2[j]:
@@ -25,10 +25,51 @@ class Solution:
                     dp[i+1][j+1]=max(dp[i][j+1] ,dp[i+1][j ])
 
         result = sum(map(ord, s1 + s2)) - dp[rows][cols] * 2
-
-
+       
+        print(sum(map(ord, s1 + s2)))
         return result
     
+    def solution2(self,s1,s2):
+        dp={}
 
+        def dfs(i,j):
+
+            if i == len(s1) and j == len(s2):
+                return 0
+            
+            if i == len(s1):
+                return sum(map(ord,s2[j:]))
+            
+            if j == len(s2):
+                return sum(map(ord,s1[i:]))
+            
+
+            if (i,j) in dp:
+                return dp[(i,j)]
+            
+            ans=0
+            if s1[i] == s2[j]:
+                # move on
+                ans=dfs(i+1,j+1)
+
+            else:
+                # 1 we can delete ith character
+                # 2 we can delete jth character
+                ans=min(
+                    dfs(i+1,j)+ord(s1[i]),
+                    dfs(i,j+1)+ord(s2[j])
+                ) 
+
+            dp[(i,j)]=ans
+
+            return dp[(i,j)]
+
+        return dfs(0,0)
+    
+
+    
+
+print(Solution().solution2("sea","eat"))
 print(Solution().minimumDeleteSum("sea","eat"))
+
  
