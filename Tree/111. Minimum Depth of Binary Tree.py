@@ -21,7 +21,7 @@ class Solution:
 
         # dfs function to find min depth
         def dfs(node,count=0):
-            # edje case if node is None return 0
+            # edge case if node is None return 0
             if not node:
                 return 0
 
@@ -33,3 +33,27 @@ class Solution:
 
 
         return dfs(root)
+    
+    # bfs solution
+
+    def minDepth2(self,root):
+
+        if not root:
+            return 0
+        
+        queue = deque([root])
+        count=0
+        while queue:
+            node= queue.popleft()
+
+            if not node.left and not node.right:
+                return count+1
+            
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+            count+=1
+
+        return count
