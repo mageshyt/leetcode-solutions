@@ -42,18 +42,21 @@ class Solution:
             return 0
         
         queue = deque([root])
-        count=0
+        count=1
         while queue:
-            node= queue.popleft()
+            size=len(queue)
 
-            if not node.left and not node.right:
-                return count+1
-            
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
+            for _ in range(size):
+                node = queue.popleft()
+                if not node.left and not node.right:
+                    return count+1
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
 
             count+=1
+
+
 
         return count
