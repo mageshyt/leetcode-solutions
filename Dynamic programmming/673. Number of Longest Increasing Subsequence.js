@@ -25,7 +25,7 @@ const findNumberOfLIS = (nums) => {
     //! max len and max count
     let [maxLen, maxCount] = [1, 1]; //! because we assume that the first element is the longest increasing subsequence
     for (let j = i + 1; j < nums.length; j++) {
-      //! to make sure that we are in increasing order
+      //! to make sure that we are in increasing orderS
       if (nums[i] < nums[j]) {
         const [length, count] = dp.get(j);
 
