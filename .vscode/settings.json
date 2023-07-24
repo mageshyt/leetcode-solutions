@@ -1,4 +1,8 @@
 {
   "cSpell.words": ["dcba", "nums", "popleft", "sssll", "Toeplitz"],
-  "cSpell.ignoreWords": ["makesquare"]
+  "cSpell.ignoreWords": ["makesquare"],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
