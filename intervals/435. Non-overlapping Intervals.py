@@ -16,9 +16,7 @@ Explanation: You need to remove two [1,2] to make the rest of the intervals non-
 from typing import List
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        # Check if the number of intervals is less than or equal to 1
-        if len(intervals) <= 1:
-            return 0
+   
 
         # Sort the intervals based on their end times in ascending order
         intervals.sort(key=lambda interval: interval[1])
@@ -41,7 +39,13 @@ class Solution:
 
         # Return the maximum number of non-overlapping intervals
         return count
+    
+    # solution 2
 
-intervals = [ [1,2],[2,3],[3,4],[1,3] ]
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
+
+
+
+ 
 
 print(Solution().eraseOverlapIntervals(intervals))

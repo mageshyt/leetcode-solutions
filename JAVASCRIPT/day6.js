@@ -10,6 +10,7 @@ var reduce = function (nums, fn, init) {
   }
 
   return res;
+  Number.MIN_VALUE
 };
 
 fn = function sum(accum, curr) {

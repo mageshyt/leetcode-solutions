@@ -11,7 +11,6 @@ Example 2:
 
 Input: n = 1
 Output: 1`;
-
 const numTrees = (n) => {
   const table = new Array(n + 1).fill(0);
   table[0] = 1;
@@ -23,4 +22,5 @@ const numTrees = (n) => {
   }
   return table[n];
 };
+
 console.log(numTrees(3));
