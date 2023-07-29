@@ -22,20 +22,56 @@ Explanation: Player 1 first chooses 1. Then player 2 has to choose between 5 and
 Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win."""
 from typing import List
 
+from typing import List
+
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         n = len(nums)
-        dp = [[0]*n for _ in range(n)]  # Create a 2D array to store the results of subproblems.
 
-        # Fill in the dp array from the bottom up.
-        for i in range(n-1, -1, -1):  # Iterate from the end of the array to the beginning.
-            for j in range(i, n):  # For each element i, calculate the result for all possible subarrays ending at index j.
-                if i == j:  # Base case: If i and j are the same, there is only one element in the subarray.
-                    dp[i][j] = nums[i]  # So, the result is simply the value of that element.
-                else:
-                    # For other cases, calculate the result by choosing the maximum of two options:
-                    # 1. If the player chooses the element at index i, subtract the result of the subarray excluding that element (dp[i+1][j]).
-                    # 2. If the player chooses the element at index j, subtract the result of the subarray excluding that element (dp[i][j-1]).
-                    dp[i][j] = max(nums[i] - dp[i+1][j], nums[j] - dp[i][j-1])
+        cache = {}  # Create a dictionary to store the results of subproblems.
 
-        return dp[0][n-1] >= 0  # The final result will be stored at dp[0][n-1], and we check if it is greater than or equal to 0.
+        # The `helper` function calculates the maximum score that can be achieved by the current player
+        # by choosing numbers from the subarray nums[i:j+1], where i is the starting index and j is the ending index.
+
+        def helper(i, j):
+            # Check if the result for the current subarray (i, j) is already in the cache.
+            if (i, j) in cache:
+                return cache[(i, j)]
+
+            # Base cases:
+            if i == j:
+                return nums[i]  # If there is only one element in the subarray, return its value.
+
+            if i > j:
+                return 0  # If i is greater than j, the subarray is empty, so return 0.
+
+            # Calculate the maximum score that can be achieved by the current player by choosing the first or last element
+            # of the subarray, and then recursively calculating the minimum score that the other player can achieve
+            # with the remaining subarray after the current player's turn.
+            max_score = max(
+                nums[i] + min(helper(i + 2, j), helper(i + 1, j - 1)),
+                nums[j] + min(helper(i + 1, j - 1), helper(i, j - 2))
+            )
+
+            # Store the result in the cache.
+            cache[(i, j)] = max_score
+
+            return max_score
+
+        # Calculate Bob's maximum score.
+        bob_score = helper(0, n - 1)
+
+        print(bob_score)  # Print Bob's maximum score.
+
+        # Calculate the total sum of all the numbers in the array.
+        total = sum(nums)
+
+        # Alice's maximum score is the total sum of all the numbers in the array minus Bob's maximum score.
+        alice_score = total - bob_score
+
+        return bob_score >= alice_score  # Return True if Bob's maximum score is greater than or equal to Alice's maximum score, otherwise return False.
+
+
+if __name__ == "__main__":
+    print(Solution().PredictTheWinner([1,5,233,7]))
+
