@@ -19,7 +19,8 @@ Example 2:
 Input: nums = [1,5,233,7]
 Output: true
 Explanation: Player 1 first chooses 1. Then player 2 has to choose between 5 and 7. No matter which number player 2 choose, player 1 can choose 233.
-Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win."""
+Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win.
+"""
 from typing import List
 
 from typing import List

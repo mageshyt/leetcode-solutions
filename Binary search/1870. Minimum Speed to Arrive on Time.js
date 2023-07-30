@@ -24,13 +24,17 @@ const minSpeedOnTime = (dist, hour) => {
     right = 10 ** 7,
     mid;
 
-  while (left < right) {
+  let res = -1;
+
+  while (left <= right) {
     mid = Math.floor((left + right) / 2);
-    if (canArrive(dist, hour, mid)) right = mid;
-    else left = mid + 1;
+    if (canArrive(dist, hour, mid)) {
+      res = mid;
+      right = mid-1;
+    } else left = mid + 1;
   }
 
-  return left === 10 ** 7 ? -1 : left;
+  return res;
 };
 
 const canArrive = (dist, hour, speed) => {
