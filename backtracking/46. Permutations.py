@@ -6,6 +6,7 @@ class Solution:
         return res
 
     def backtrack(self, nums, path, res):
+        print(nums, path, res)
         if not nums:
             res.append(path)
             return
