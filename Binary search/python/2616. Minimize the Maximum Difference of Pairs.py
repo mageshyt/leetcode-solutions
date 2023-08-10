@@ -17,38 +17,40 @@ Example 2:
 Input: nums = [4,2,1,2], p = 1
 Output: 0
 Explanation: Let the indices 1 and 3 form a pair. The difference of that pair is |2 - 2| = 0, which is the minimum we can attain."""
-
 class Solution:
     def minimizeMax(self, nums: List[int], p: int) -> int:
-
+        # Define a helper function to check if it's possible to have 'p' segments with maximum difference 'threshold'
         def helper(threshold):
-            i,cnt=0,0
-            
-            while i < len(nums)-1:
-                if abs(nums[i]-nums[i+1]) <= threshold:
-                    i+=2
-                    cnt+=1
+            i, cnt = 0, 0
 
+            while i < len(nums) - 1:
+                # If the absolute difference between consecutive numbers is within the threshold
+                if abs(nums[i] - nums[i + 1]) <= threshold:
+                    i += 2
+                    cnt += 1
                 else:
-                    i+=1
-                if cnt==p:
+                    i += 1
+
+                # If we have found 'p' segments
+                if cnt == p:
                     return True
-                
+
             return False
         
-
+        # Sort the input array
         nums.sort()
 
-        l,r=0,10**9
-        res=10**9
-        while l<=r:
-            mid=(l+r)//2
+        l, r = 0, 10**9
+        res = 10**9
+        
+        # Perform binary search to find the minimum maximum difference
+        while l <= r:
+            mid = (l + r) // 2
+            # Check if it's possible to have 'p' segments with maximum difference 'mid'
             if helper(mid):
-                res=min(res,mid)
-                r=mid-1
+                res = min(res, mid)
+                r = mid - 1
             else:
-                l=mid+1
+                l = mid + 1
 
         return res
-    
-    
