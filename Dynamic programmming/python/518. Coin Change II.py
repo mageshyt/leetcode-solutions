@@ -26,7 +26,7 @@ Example 3:
 
 Input: amount = 10, coins = [10]
 Output: 1"""
-
+from typing import List
 class Solution:
     def change(self, amount: int, denoms: List[int]) -> int:
 

@@ -30,6 +30,7 @@
       "ABCABC",
       "dont",
       "mincost",
+      "subarray",
       "subarrays"
     ],
     "ignoreWords": [],
