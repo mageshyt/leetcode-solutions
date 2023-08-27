@@ -43,7 +43,7 @@ class Solution:
     # solution 2
 
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-
+        pass
 
 
  

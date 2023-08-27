@@ -19,16 +19,14 @@ class Solution:
         cache={}
         def dfs(a=0,b=0,c=0):
             # base case
-            if a==len(s1) and b==len(s2) and c==len(s3):
-                return True
+            if c==len(s3):
+                return a==len(s1) and b==len(s2)
             
             if (a,b,c) in cache:
                 return cache[(a,b,c)]
             
             ans=False
-
             if a<len(s1) and s1[a]==s3[c]:
-
                 ans|=dfs(a+1,b,c+1)
 
             if b<len(s2) and s2[b]==s3[c]:
@@ -44,11 +42,11 @@ class Solution:
 
     
 
-s1 = "aabcc"
-s2 = "dbbca"
+s1 = "a"
+s2 = "b"
 
 
-print(Solution().isInterleave(s1,s2,"aadbbcbcac"))
+print(Solution().isInterleave(s1,s2,"d"))
     
 
 
