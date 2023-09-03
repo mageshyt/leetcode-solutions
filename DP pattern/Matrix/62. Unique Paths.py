@@ -13,6 +13,30 @@ class Solution:
             row = newRow  # update row
 
         return row[0]  # return first element
+    # recursive solution
+    def uniquePaths(self,m:int,n:int)->int:
+        cache={}
+        def dfs(row,col):
+            if (row,col)in cache:
+                return cache[(row,col)]
+            
+            if row == 1 and col ==1:
+                return 1
+            
+            if row==0 or col ==0:
+                return 0
+            
+            cache[(row,col)]=dfs(row-1,col) + dfs(row,col-1)
+
+            return cache[(row,col)]
+        
+        return dfs(0,0)
+    
+
+
+    
+
+
 
 
 

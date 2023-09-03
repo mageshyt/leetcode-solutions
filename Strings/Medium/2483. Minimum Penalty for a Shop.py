@@ -36,13 +36,11 @@ class Solution:
             # If a customer comes at the current hour ('Y' is recorded).
             if customers[customer] == 'Y':
                 customer_left += 1
-                
                 # If there were customers in the shop before and now a customer has come, increase the penalty.
                 if customer_left > 0:
-                    ans += 1
+                    ans =customer + 1
                     customer_left = 0
-                else:
-                    customer_left -= 1
+
             # If no customer comes at the current hour ('N' is recorded).
             else:
                 customer_left -= 1
