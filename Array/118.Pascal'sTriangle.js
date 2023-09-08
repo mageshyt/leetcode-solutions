@@ -16,9 +16,9 @@ Output: [[1]]
 
 Constraints:
     1 <= numRows <= 30
+    
 `;
 const generate = (numRows) => {
-
   const result = [];
   for (let i = 0; i < numRows; i++) {
     result.push([]);
@@ -26,7 +26,6 @@ const generate = (numRows) => {
       if (j === 0 || j === i) {
         //! first and last element going to be 1
         result[i].push(1);
-        
       } else {
         //! middle elements are the sum of the two above elements (i-1, j-1) and (i-1, j)
         result[i].push(result[i - 1][j - 1] + result[i - 1][j]);
