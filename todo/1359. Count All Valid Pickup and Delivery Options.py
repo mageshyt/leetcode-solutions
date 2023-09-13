@@ -13,5 +13,3 @@ class Solution:
             slots-=2
 
         return output%(10**9+7)
-    
-    
