@@ -43,3 +43,28 @@ class Solution:
                 
         return None
     
+    # time complexity O(n)
+    # space complexity O(n)
+
+
+    def findTheDifference(self, s: str, t: str) -> str:
+
+        # logic is find the sum of the ascii values of the t string and subtract the sum of the ascii values of the s string
+
+        sum_t = 0
+        sum_s = 0
+
+        for char in t:
+            sum_t += ord(char)
+
+        for char in s:
+
+            sum_s += ord(char)
+
+
+        return chr(sum_t - sum_s)
+    
+    # time complexity O(n)
+    # space complexity O(1)
+    
+
