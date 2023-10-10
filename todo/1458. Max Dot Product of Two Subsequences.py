@@ -21,4 +21,24 @@ Their dot product is (3*7) = 21."""
 
 class Solution:
     def maxDotProduct(self, nums1: List[int], nums2: List[int]) -> int:
-        pass
+        n=len(nums1)
+        m=len(nums2)
+
+        dp=[[float('-inf')] * m for _ in range(n)]
+
+        def dp(i, j):
+                    if i == n or j == m:
+                        return float('-inf')
+                    
+                    if dp[i][j] != float('-inf'):
+                        return dp[i][j]
+                    
+                    dp[i][j] = max(
+                        nums1[i] * nums2[j] + max(dp(i + 1, j + 1), 0),
+                        dp(i + 1, j),  
+                        dp(i, j + 1), 
+                    )
+                    
+                    return dp[i][j]
+        
+        return dp(0,0)
