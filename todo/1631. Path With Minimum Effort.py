@@ -1,41 +1,33 @@
 from collections import deque
-
+import heapq
 
 class Solution:
     def minimumEffortPath(self, heights):
-        row, col = len(heights), len(heights[0])
-        left=0
-        right=pow(10,6)
-        if row ==1 and col ==1:
-            return 0
-        direction=[(0,1),(0,-1),(1,0),(-1,0)]
+        rows, cols = len(heights), len(heights[0])
+        minHeap=[[0,0,0]] # [effort, row, col]
+        visited=set()
 
-        def connect(target):
-            visited=[[False] * col for _ in range(row)]
-            queue=deque()
-            def enqueue(x,y):
-                queue.append((x,y))
-                visited[x][y]=True
-            enqueue(0,0)
-            # search in all directions
-            while (queue):
-                x,y=queue.popleft()
-                for dx,dy in direction:
-                    newRow=x+dx
-                    newCol=y+dy
-                    if 0<=newRow< row and 0<=newCol<col and not visited[newRow][newCol] and\
-                          abs(heights[newRow][newCol] - heights[x][y]) <= target:
-                        enqueue(newRow,newCol)
-                        if newRow==row -1 and newCol==col -1:
-                            return True
-            return False
+        while minHeap:
+            effort, row, col=heapq.heappop(minHeap)
 
-        # both left and right are possible ans
-        while left<right:
-            mid=(left+right)//2 # get out mid
-            if connect(mid):
-                # mid would be our ans
-                right=mid
-            else:
-                left=mid+1
-        return left
+            if (row,col) in visited:
+                continue
+
+            visited.add((row,col))
+
+            if (row,col)==(rows-1,cols-1):
+                    return effort
+            
+            for dx,dy in [(0,1),(0,-1),(1,0),(-1,0)]:
+                newRow=row+dx
+                newCol=col+dy
+
+                # boundary check
+
+                if 0<=newRow<rows and 0<=newCol<cols and (newRow,newCol) not in visited:
+                    # calculate new effort 
+                    newEffort=abs(heights[newRow][newCol]-heights[row][col])
+                    # push to minHeap
+                    heapq.heappush(minHeap,[max(effort,newEffort),newRow,newCol])
+
+        return -1

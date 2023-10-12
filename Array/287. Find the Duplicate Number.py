@@ -21,8 +21,8 @@ class Solution:
         # Floyd's Tortoise and Hare (Cycle Detection)
         # Time: O(n)
         # Space: O(1)
-        turtle = nums[0]
-        hare = nums[0]
+        turtle = 0
+        hare = 0
 
         while True:
             turtle = nums[turtle]  # slow pointer
@@ -30,15 +30,17 @@ class Solution:
             if turtle == hare:
                 break
 
-        ptr1 = nums[0]
-        ptr2 = turtle
 
-        while ptr1 != ptr2:
-            ptr1 = nums[ptr1]
-            ptr2 = nums[ptr2]
+        # phase 2
 
-        return ptr1
+        turtle2=0
+        while True:
+            turtle=nums[turtle]
+            turtle2=nums[turtle2]
 
+            if turtle==turtle2:
+                return turtle
+            
 
 if __name__ == "__main__":
     nums = [1, 3, 4, 2, 2]
