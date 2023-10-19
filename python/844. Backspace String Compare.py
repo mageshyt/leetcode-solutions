@@ -2,6 +2,7 @@ from inspect import stack
 
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
+        
         def backSpace(string):
             stack = []
             for char in string:
