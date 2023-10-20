@@ -36,7 +36,7 @@ class NestedIterator {
       nested.isInteger() ? nested.getInteger() : this.flatten(nested.getList())
     );
   }
-  
+
   hasNext() {
     return this.stack.length > 0;
   }
