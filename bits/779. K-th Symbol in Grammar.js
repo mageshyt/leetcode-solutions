@@ -19,22 +19,21 @@ row 1: 0
 row 2: 01`;
 
 const kthGrammar = (n, k) => {
-  let left = 1; // Left boundary of the string
+  let left = 1; // Left boundary
   let right = 2 ** (n - 1); // Right boundary of the string for the current level
-  let curr = 0; // Initialize the current character as 0
+  let res = 0;
 
-  for (let i = 0; i < n; i++) {
-    let mid = (left + right) / 2; // Find the middle position of the string
+  for (let i = 0; i < n - 1; i++) {
+    let mid = Math.floor((left + right) / 2); // Find the middle position of the string
 
     if (k <= mid) {
-      right = mid; // If k is in the left half, adjust the right boundary
+      // if k is in the left half, adjust the right boundary
+      right = mid;
     } else {
       left = mid + 1; // If k is in the right half, adjust the left boundary
-      curr = curr ? 0 : 1; // Toggle the current character (0 to 1, or 1 to 0)
+      res = res === 0 ? 1 : 0; // Toggle the current character (0 to 1, or 1 to 0)
     }
   }
 
-  return curr; // Return the k-th character in the string
+  return res;
 };
-
-
