@@ -29,7 +29,7 @@ Output: 68
 Constraints:"""
 
 class Solution:
-    # Recursive solution
+    # DP solution
     def countVowelPermutation(self, n: int) -> int:
 
         # we will see in reverse way
