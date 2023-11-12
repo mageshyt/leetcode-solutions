@@ -1,6 +1,7 @@
 from collections import defaultdict, deque
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+        if source == target: return 0
         # 1. Build a graph
 
         graph = defaultdict(list)
