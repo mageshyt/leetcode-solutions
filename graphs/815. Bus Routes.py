@@ -39,4 +39,4 @@ class Solution:
                         visited.add(neighbor)
 
         return -1
-    
+
