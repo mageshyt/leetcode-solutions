@@ -1,2 +1,3 @@
-1.1727 Largest sub matrix
-2.935. Knight Dialer
+1.1727 Largest sub matrix | Medium
+2.935. Knight Dialer | Medium
+3.2147. Number of Ways to Divide a Long Corridor
