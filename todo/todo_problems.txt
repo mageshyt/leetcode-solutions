@@ -2,3 +2,4 @@
 2.935. Knight Dialer | Medium
 3.2147. Number of Ways to Divide a Long Corridor  
 4.191. Number of 1 Bits | Easy | solved
+5.1611. Minimum One Bit Operations to Make Integers Zero | Hard
