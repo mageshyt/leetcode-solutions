@@ -8,8 +8,9 @@ const CubeConundrum = (inputArray) => {
 
   for (let i = 0; i < inputArray.length; i++) {
     const games = inputArray[i];
+
     if (games.length === 0) continue;
-    res += helper1(games, i + 1) ? i + 1 : 0;
+    res += helper2(games, i + 1);
   }
 
   return res;
@@ -61,4 +62,40 @@ const helper1 = (str, idx) => {
   return true;
 };
 
+const helper2 = (str, idx) => {
+  const cubeMap = new Map();
+  const games = str
+    .replace(`Game ${idx}:`, "")
+    .split(";")
+    .map((game) => {
+      const cubes = game
+        .trim()
+        .split(",")
+        .map((cube) => {
+          const [num, color] = cube.trim().split(" ");
+
+          cubeMap.set(color, [...(cubeMap.get(color) || []), parseInt(num)]);
+
+          return [parseInt(num), color];
+        });
+
+      return cubes;
+    });
+
+  //   console.log("👉 cubes", cubeMap);
+
+  let power = 1;
+
+  for (let [key, value] of cubeMap.entries()) {
+    // get the max value
+
+    const maxValue = Math.max(...value);
+    // console.log("👉 max in " + key + maxValue);
+
+    power *= maxValue;
+  }
+
+  console.log("👉 power", power);
+  return power;
+};
 console.log("👉 ", CubeConundrum(inputArray));
