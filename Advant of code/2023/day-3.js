@@ -1,60 +1,74 @@
+//--- Day 3: Gear Ratios ---
 const fs = require("fs");
-
 const path = require("path");
+const input = fs.readFileSync(path.resolve(__dirname, "testcase.txt"), "utf8");
+const inputArray = input.split("\n");
 
-const data = fs.readFileSync(path.join(__dirname, "testcase.txt"), "utf8");
-const lines = data.trim().split("\n");
-console.log("👉 leans", lines);
+rows = inputArray.length;
+cols = inputArray[0].length;
 
-const n = lines.length;
-const m = lines[0].length;
+const gondolaLift = (inputs) => {
+  let res = 0;
 
-console.log("👉 n", n);
-console.log("👉 m", m);
+  for (let i = 0; i < inputs.length; i++) {
+    const line = inputs[i];
 
-const is_symbol = (i, j) => {
-  if (!(0 <= i && i < n && 0 <= j && j < m)) {
-    return false;
+    res += helper1(line, i + 1);
   }
 
-  return lines[i][j] !== "." && !isNaN(lines[i][j]);
+  return res;
 };
 
-let ans = 0;
+// part 1
 
-for (let i = 0; i < lines.length; i++) {
-  let start = 0;
+const helper1 = (line, i) => {
   let j = 0;
+  let ans = 0;
+  let start = 0;
+  let digits = "0123456789";
 
-  while (j < m) {
+  while (j < cols) {
     start = j;
     let num = "";
 
-    while (j < m && !isNaN(lines[i][j])) {
-      num += lines[i][j];
+    while (j < cols && digits.includes(line[j])) {
+      num += line[j];
       j++;
     }
 
-    if (num === "") {
+    if (!num.length) {
       j++;
       continue;
     }
 
     const numInt = parseInt(num);
 
-    // Number ended, look around
+    // look at the ends
+
     if (is_symbol(i, start - 1) || is_symbol(i, j)) {
       ans += numInt;
       continue;
     }
 
-    for (let k = start - 1; k <= j; k++) {
+    // look at the top and bottom
+
+    for (let k = start; k <= j; k++) {
       if (is_symbol(i - 1, k) || is_symbol(i + 1, k)) {
         ans += numInt;
         break;
       }
     }
   }
-}
 
-console.log(ans);
+  return ans;
+};
+
+const is_symbol = (i, j) => {
+  if (i < 0 || i >= rows || j < 0 || j >= cols) return false;
+  let digits = "0123456789";
+  console.log("👉 line", inputArray[i][j]);
+  if (!inputArray[i][j]) return false;
+  return inputArray[i][j] !== "." && !digits.includes(inputArray[i][j]);
+};
+
+console.log("👉 ", gondolaLift(inputArray));
