@@ -1,77 +1,79 @@
-# --- Day 12: Hot Springs ---
+#--- Day 13: Point of Incidence ---
 
 
-# (.)->operational
-# (#)->broken
-# (?)-> can be either operational or broken
+# (.) ash
+# (#) rock
+
+with open("../testcase.txt") as f:
+    pattern=[lines.split("\n") for lines in f.read().strip().split("\n\n")]
 
 
+print(len(pattern))
 
-lines=open("../testcase.txt").read().splitlines()
+# method to transpose the matrix
 
-class Solution:
-    def __init__(self):
-        self.memo = {}
-    def count(self,cfg, nums):
-        if (cfg, tuple(nums)) in self.memo:
-            return self.memo[(cfg, tuple(nums))]
-        
-        if cfg == "":
-            return 1 if not len(nums) else 0
-
-        if not len(nums):
-            return 0 if "#" in cfg else 1
-
-        result = 0
-        
-        if cfg[0] in ".?":
-            # skip this one
-            result += self.count(cfg[1:], nums)
-            
-        if cfg[0] in "#?":
-            # 1. cfg should have enough length
-            # 2. cfg should not contain any "."
-            # 3. cfg should not end with "#"
-            if nums[0] <= len(cfg) and "." not in cfg[:nums[0]] and (nums[0] == len(cfg) or cfg[nums[0]] != "#"):
-                result += self.count(cfg[nums[0] + 1:], nums[1:])
-
-        self.memo[(cfg, tuple(nums))] = result
-        return  result
+def transpose(matrix):
+    return list(zip(*matrix))
 
 
+def is_horizontal_symmetry(grid, row_index):
+ 
+    num_rows, num_cols = len(grid), len(grid[0])
+
+    # Iterate through each column in the grid
+    for col_index in range(num_cols):
+        # Iterate through each row on one side of the specified row
+        for relative_row_index in range(num_rows):
+            # Calculate the symmetric row index on the opposite side of the specified row
+            symmetric_row_index = (row_index * 2 + 1) - relative_row_index
+
+            # Check if the symmetric row index is within valid row indices
+            if not (0 <= symmetric_row_index < num_rows):
+                continue
+
+            # Compare the element at the current row and column with its symmetric counterpart
+            if grid[relative_row_index][col_index] != grid[symmetric_row_index][col_index]:
+                # If any pair of elements are not equal, the row is not horizontally symmetric
+                return False
+
+    # If all comparisons pass, the row exhibits horizontal symmetry
+    return True
 
 
-    def HotSprings(self):
-        print("Hot Springs Solution")
+def pointOfIncidence():
+    print("Point of Incidence Solution")
 
-        print("Part 1: ", self.part1())
-        print("Part 2: ", self.part2())
+    ans=0
+    for grid in pattern:
+        print("??")
+        ans+=part1(grid)
 
+    print("Part 1: ", ans)
 
-    def part1(self):
-        total=0 # count no of operation
-        for line in lines:
-            cfg,nums=line.split()
-            nums=list(map(int,nums.split(",")))
-            # print(cfg,nums)
-            total+=self.count(cfg,nums)
-
-        return total
+    print("Part 2: ", part2())
 
 
-    def part2(self):
-        total=0 # count no of operation
-        for line in lines:
-            cfg,nums=line.split()
-            nums=list(map(int,nums.split(",")))
-            # print(cfg,nums)
-            cfg="?".join([cfg]*5)
-            nums*=5
-            total+=self.count(cfg,nums)
+def part1(grid):
+    n, m = len(grid), len(grid[0])
 
-        return total
+    horiz = -1
+    for i in range(n-1):
+        if is_horizontal_symmetry(grid, i):
+            horiz = i
+            break
+
+    vert = -1
+    T = transpose(grid)
+    for j in range(m-1):
+        if is_horizontal_symmetry(T, j):
+            vert = j
+            break
+
+    assert vert == -1 or horiz == -1
+    return vert + 1 + 100 * (horiz + 1)
 
 
+def part2():
+    pass
 
-if __name__ == "__main__":
-    Solution().HotSprings()
+pointOfIncidence()
