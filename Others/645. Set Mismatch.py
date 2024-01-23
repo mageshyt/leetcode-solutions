@@ -15,6 +15,3 @@ class Solution:
                 res[1]=i+1
                 break
         return res
-    
-
-        
