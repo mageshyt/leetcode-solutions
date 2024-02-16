@@ -5,3 +5,4 @@
 5.1611. Minimum One Bit Operations to Make Integers Zero | Hard
 6.2482. Difference Between Ones and Zeros in Row and ColumnA
 7. 1463. Cherry Pickup II | Hard
+8. 1481. Least Number of Unique Integers after K Removals | Medium
