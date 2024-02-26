@@ -56,3 +56,31 @@ class Solution:
             queue.append(node2.right)
 
         return True
+    
+    # solution 2 - dfs
+
+    # Time : O(n) | Space : O(n)
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        cache={}
+
+        def dfs(p,q):
+            if not p and not q:
+                return True
+            
+            if not p or not q:
+                return False
+            
+            if p.val!=q.val:
+                return False
+            
+            if (p,q) in cache:
+                return cache[(p,q)]
+            
+            cache[(p,q)]=dfs(p.left,q.left) and dfs(p.right,q.right)
+
+            return cache[(p,q)]
+        
+        return dfs(p,q)
+    
+

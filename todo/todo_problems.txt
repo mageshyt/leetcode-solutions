@@ -1,8 +1,9 @@
 1.1727 Largest sub matrix | Medium
 2.935. Knight Dialer | Medium
-3.2147. Number of Ways to Divide a Long Corridor  
+3.2147. Number of Ways to Divide a Long Corridor
 4.191. Number of 1 Bits | Easy | solved
 5.1611. Minimum One Bit Operations to Make Integers Zero | Hard
 6.2482. Difference Between Ones and Zeros in Row and ColumnA
 7. 1463. Cherry Pickup II | Hard
 8. 1481. Least Number of Unique Integers after K Removals | Medium
+9. 2709. Greatest Common Divisor Traversal | Hard

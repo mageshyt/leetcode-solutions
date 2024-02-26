@@ -2,6 +2,7 @@ from collections import defaultdict
 
 
 class Solution:
+    # Time: O(nlogn) | Space: O(n)
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
         secrets=set([0,firstPerson]) # people with secrete
 
@@ -21,7 +22,7 @@ class Solution:
 
             for nei in adj[src]:
                 if nei not in visted:
-                    dfs(nei,t)
+                    dfs(nei,adj)
 
 
 
