@@ -9,7 +9,17 @@ class Solution:
         freq=sorted(freq.items(),key=lambda x:x[1],reverse=True )
 
         max_freq=freq[0][1]
-        max_freq_elements=[ max
+        max_freq_elements=0
+        print(freq)
+        for i in range(len(freq)):
+            if freq[i][1]==max_freq:
+                max_freq_elements+=max_freq
+            else:
+                break
+        
+        return max_freq_elements
+
+
 
 
 sol=Solution()
