@@ -30,9 +30,11 @@ class ListNode:
 from typing import Optional
 class Solution:
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # create a dummy node
+        dummy = ListNode(0)
+        dummy.next = head
         prefix_sum = 0
-        prefix_sum_to_node = {0: ListNode(0)}
-
+        prefix_sum_to_node = {0: dummy}
         node = head
 
         while node:
@@ -46,6 +48,15 @@ class Solution:
                 while to_delete != node:
                     # remove the prefix sum to node mapping
                     del prefix_sum_to_node[temp_sum]
+                    # move the pointer
                     to_delete = to_delete.next
                     temp_sum += to_delete.val
                 prefix_sum_to_node[prefix_sum].next = node.next
+
+            else:
+                # if no, add the prefix sum to the map
+                prefix_sum_to_node[prefix_sum] = node
+            # move the pointer
+            node = node.next
+
+        return dummy.next
