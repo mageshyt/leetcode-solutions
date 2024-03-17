@@ -29,7 +29,7 @@ newInterval.length == 2
 
 class Solution:
     def insert(self, intervals, newInterval):
-        # edge case
+                # edge case
         if len(intervals) == 0:
             return [newInterval]
         # find the place to insert the new interval so check interval end is > new interval start
@@ -49,6 +49,26 @@ class Solution:
         intervals.insert(i, newInterval)
 
         return intervals
+    # Time : O(n) Space: O(1)
+    def insert(self, intervals, newInterval):
+        if not intervals:
+            return [newInterval]
+        n=len(intervals)
+        
+        start=0
+        # move the pointer to the right place until the insertion point is less than
+        while start < n and intervals[start][1] < newInterval[0]:
+            start+=1
+
+        end=start
+
+        while end < n and intervals[end][0] <= newInterval[1]:
+            # update the newInterval to the merged interval
+            newInterval[0]= min(newInterval[0],intervals[end][0])
+            newInterval[1]= max(newInterval[1],intervals[end][1])
+            end+=1
+
+        return intervals[:start]+[newInterval]+intervals[end:]
 
 
 if __name__ == "__main__":
