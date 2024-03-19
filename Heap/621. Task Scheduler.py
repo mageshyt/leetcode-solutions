@@ -66,6 +66,37 @@ class Solution:
 
         return time_taken
 
+    def leastInterval(self, tasks, n: int) -> int:
+        # count the occurences of each task
+        hash_map = Counter(tasks)
+
+        max_heap=[-val for val in hash_map.values()] # we are going to use max heap to store the tasks
+        heapq.heapify(max_heap)
+
+        time_taken = 0
+
+        queue=deque()
+
+        while max_heap or queue:
+            # increase the time
+            time_taken+=1
+
+            if max_heap:
+                # we are adding 1 to the task count to make it positive
+                next_task=heapq.heappop(max_heap)+1
+                time_for_next_task=time_taken+n
+
+                # push to queue if there is still work to do
+                if next_task:
+                    queue.append([next_task, time_for_next_task])
+
+            # if queue is not empty and the time for next task is available
+            if queue and queue[0][1]==time_taken:
+                pop=queue.popleft()[0]
+                heapq.heappush(max_heap, pop)
+    
+        return time_taken
+
 
 if __name__ == '__main__':
     s = Solution()
