@@ -1,4 +1,5 @@
 from typing import List
+<<<<<<< HEAD
 class Solution:
     # Time : O(n) Space: O(1)
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
@@ -27,3 +28,18 @@ class Solution:
 
 sol=Solution()
 print(sol.numSubarraysWithSum([0,0,0,0,0],0))
+=======
+
+
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        w_s, w_e = 0, 1
+        sub_count = 0
+        pre_sum = nums[0]
+        while w_s < len(nums):
+            pass
+        return sub_count
+
+
+print(Solution().numSubarraysWithSum([1, 0, 1, 0, 1], 2))
+>>>>>>> 167b9ae (sliding window problem)
