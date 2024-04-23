@@ -7,4 +7,5 @@
 7. 1463. Cherry Pickup II | Hard
 8. 1481. Least Number of Unique Integers after K Removals | Medium
 9. 2709. Greatest Common Divisor Traversal | Hard
-10.1171. Remove Zero Sum Consecutive Nodes from Linked List | Medium
+10. 1171. Remove Zero Sum Consecutive Nodes from Linked List | Medium
+11. 310. Minimum Height Trees
