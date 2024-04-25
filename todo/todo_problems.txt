@@ -9,3 +9,4 @@
 9. 2709. Greatest Common Divisor Traversal | Hard
 10. 1171. Remove Zero Sum Consecutive Nodes from Linked List | Medium
 11. 310. Minimum Height Trees
+12. 2370. Longest Ideal Subsequence
