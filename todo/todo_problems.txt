@@ -10,3 +10,4 @@
 10. 1171. Remove Zero Sum Consecutive Nodes from Linked List | Medium
 11. 310. Minimum Height Trees
 12. 2370. Longest Ideal Subsequence
+13. 2487. Remove Nodes From Linked List | Medium
