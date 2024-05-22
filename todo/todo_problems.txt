@@ -16,3 +16,6 @@
 16. 857. Minimum Cost to Hire K Workers | Hard
 17.2373. Largest Local Values in a Matrix | Easy
 18. 1219. Path with Maximum Gold | Medium
+
+
+# start to solve the problem from 23rd May 2024
