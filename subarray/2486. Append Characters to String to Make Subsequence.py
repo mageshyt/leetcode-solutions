@@ -30,16 +30,15 @@ It can be shown that appending any 4 characters to the end of s will never make 
 
 class Solution:
     def appendCharacters(self, s: str, t: str) -> int:
-        i,j=0,0
+        left,right=0,0
 
-        while i<len(s) and j<len(t):
-            if s[i]==t[j]:
-                j+=1
-                i+=1
+        while left<len(s) and right<len(t):
+            if s[left]==t[right]:
+                left,right=left+1,right+1
             else:
-                i+=1
+                left+=1
 
-        return len(t)-j# return the number of characters that need to be appended to the end of s
+        return len(t)-right# return the number of characters that need to be appended to the end of s
 
 # Time complexity: O(n)
 # Space complexity: O(1)
