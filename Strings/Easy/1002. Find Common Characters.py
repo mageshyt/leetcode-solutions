@@ -1,5 +1,6 @@
 """
-Given a string array words, return an array of all characters that show up in all strings within the words (including duplicates). You may return the answer in any order.
+Given a string array words, return an array of all characters that show up in all strings within
+the words (including duplicates). You may return the answer in any order.
 
 
 
@@ -18,11 +19,17 @@ from typing import List
 from collections import Counter
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
-        res = Counter(words[0])
+        prevCounter= Counter(words[0])
         for word in words[1:]:
-            res &= Counter(word)
+            currentCounter= Counter(word)
+            for key in prevCounter:
+                prevCounter[key]= min(prevCounter[key], currentCounter[key])
+        result= []
+        for key in prevCounter:
+            result+= [key]*prevCounter[key]
 
-        return list(res.elements())
+        return result
+
 
 
 print(Solution().commonChars(["bella","label","roller"])) # ["e","l","l"]
