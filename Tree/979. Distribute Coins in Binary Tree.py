@@ -31,7 +31,6 @@ Explanation: From the left child of the root, we move two coins to the root [tak
 
 from typing import Optional
 
-
 class Solution:
     def distributeCoins(self, root: Optional[TreeNode]) -> int:
         res = [0]
