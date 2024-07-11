@@ -17,5 +17,6 @@
 17.2373. Largest Local Values in a Matrix | Easy
 18. 1219. Path with Maximum Gold | Medium
 19.1442. Count Triplets That Can Form Two Arrays of Equal XOR | Medium
+20. 1823. Find the Winner of the Circular Game | Medium
 
 # start to solve the problem from 23rd May 2024
