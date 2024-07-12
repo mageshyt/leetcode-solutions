@@ -16,6 +16,7 @@ The above figure represents the given linked list. The modified list contains
 
 """
 
+
 class Solution:
     def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         curr=head

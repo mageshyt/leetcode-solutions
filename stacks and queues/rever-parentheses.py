@@ -3,6 +3,7 @@ class Solution:
         res=[]
 
         for i in s:
+            # if the character is closing bracket, then pop the elements until opening bracket is found
             if i==")":
                 temp=[]
                 while res[-1]!="(":
@@ -10,6 +11,7 @@ class Solution:
                 res.pop()
                 res+=temp
             else:
+                # append the character to the result
                 res.append(i)
 
         print(res)
