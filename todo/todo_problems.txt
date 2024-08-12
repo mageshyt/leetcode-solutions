@@ -20,4 +20,7 @@
 20. 1823. Find the Winner of the Circular Game | Medium
 21 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance
 
+22.1653. Minimum Deletions to Make String Balanced
+
+
 # start to solve the problem from 23rd May 2024
