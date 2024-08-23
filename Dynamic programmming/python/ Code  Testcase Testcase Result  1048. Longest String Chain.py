@@ -9,7 +9,7 @@ Return the length of the longest possible word chain with words chosen from the 
 
  
 
-Example 1:
+Example 1: 
 
 Input: words = ["a","b","ba","bca","bda","bdca"]
 Output: 4
