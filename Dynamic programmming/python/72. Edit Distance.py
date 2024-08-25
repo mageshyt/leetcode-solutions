@@ -10,7 +10,7 @@ Replace a character
 
 Example 1:
 
-Input: word1 = "horse", word2 = "ros"
+    Input: word1 = "horse", word2 = "ros"
 Output: 3
 Explanation: 
 horse -> rorse (replace 'h' with 'r')
@@ -20,10 +20,10 @@ rose -> ros (remove 'e')
 
 
 class Solution:
-    def minDistance(self, word1: str, word2: str) -> int:
+    
+def minDistance(self, word1: str, word2: str) -> int:
         cache = [[float('inf')] * (len(word2)+1) for i in range(len(word1)+1)]
         # first mark no of operation for base cases
-
         # 1. last rows
         for j in range(len(word2)+1):
             # when word 1 is not empty
