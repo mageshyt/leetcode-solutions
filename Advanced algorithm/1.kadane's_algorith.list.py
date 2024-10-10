@@ -1,4 +1,3 @@
-
 class KadansAlgorithm:
 
     # brute force approach
@@ -31,7 +30,7 @@ class KadansAlgorithm:
             max_sum=max(max_sum,curr_sum)
 
 
-        return f""max_sum: {max_sum}, iteration: {iteration}
+        return f"max_sum: {max_sum}, iteration: {iteration}"
 
 
     

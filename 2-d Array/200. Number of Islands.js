@@ -63,7 +63,7 @@ const numIslands = (grid) => {
     for (let c = 0; c < cols; c++) {
       const key = `${r}-${c}`;
       if (grid[r][c] === "1" && !visited.has(key)) {
-        dfs(r, c);
+        bfs(r, c);
         count++;
       }
     }
