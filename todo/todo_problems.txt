@@ -22,3 +22,8 @@
 22.1653. Minimum Deletions to Make String Balanced
 23. 2699. Modify Graph Edge Weights | Medium
 # start to solve the problem from 23rd May 2024
+
+
+# EXAM - TODO
+1.632. Smallest Range Covering Elements from K Lists | Hard | 13 Oct 2024 | TODO
+
