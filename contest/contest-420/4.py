@@ -24,6 +24,7 @@ class Solution:
             if self.isPalindrome(self.dfsStr):
                 answer[i] = True
         
+
         return answer
 
 
