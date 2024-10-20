@@ -15,10 +15,10 @@ class Solution:
         for right in range(n):
             char_count[s[right]] += 1
 
-            # When any character's count becomes >= k, start counting valid substrings
+            # when any character's count becomes >= k, start counting valid substrings
             while any(count >= k for count in char_count.values()):
-                valid_substring_count += n - right  # All substrings from left to right are valid
-                char_count[s[left]] -= 1  # Shrink the window by moving left pointer
+                valid_substring_count += n - right  # all substrings from left to right are valid
+                char_count[s[left]] -= 1  # shrink the window by moving left pointer
                 left += 1
 
         return valid_substring_count
