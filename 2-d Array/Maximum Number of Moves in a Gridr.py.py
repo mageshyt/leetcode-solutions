@@ -11,6 +11,7 @@ Return the maximum number of moves that you can perform.
 from typing import List
 from collections import deque 
 class Solution:
+    
     def maxMoves(self, grid: List[List[int]]) -> int:
         rows, cols = len(grid), len(grid[0])
         visited=set()
@@ -50,7 +51,6 @@ class Solution:
     def maxMovesDp(self,grid:List[List[int]])->int:
         rows,cols=len(grid),len(grid[0])
         dp={}
-
         def dfs(row,col)->int:
             if (row,col) in dp:
                 return dp[(row,col)]
