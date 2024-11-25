@@ -28,3 +28,4 @@
 1.632. Smallest Range Covering Elements from K Lists | Hard | 13 Oct 2024 | TODO
 2.1405. Longest Happy String | Medium | 16 Oct 2024 | TODO
 3.670. Maximum Swap | Medium | 17 Oct 2024 | TODO
+4. 773. Sliding Puzzle | 25 Nov 2024 | TODO
