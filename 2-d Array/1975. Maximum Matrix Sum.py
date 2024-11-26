@@ -15,4 +15,3 @@ class Solution:
         return abs_sum if neg_count % 2 == 0 else abs_sum - 2 * min_abs
 
 
-
