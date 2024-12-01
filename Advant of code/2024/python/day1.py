@@ -23,9 +23,28 @@ def findSimilarity(left,right):
     l_counter=Counter(left)
     r_counter=Counter(right)
 
-    return sum((l_counter & r_counter).values())
+    total_similarity=0
 
-test_ip=open("../input.txt","r").read().split()
+    # print(l_counter,r_counter)
+
+    for key,value in l_counter.items():
+        if key in r_counter:
+            total_similarity+=key*r_counter[key] * value
+
+    return total_similarity
+
+
+
+
+# get the args if the args test then use tescase.txt file
+# else use the input.txt file
+
+import sys
+
+if sys.argv[1]=="test":
+    test_ip=open("../testcase.txt","r").read().split()
+else:
+    test_ip=open("../input.txt","r").read().split()
 
 nums=[int(i) for i in test_ip if i.isdigit()]
 left=[]
