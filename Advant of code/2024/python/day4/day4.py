@@ -23,10 +23,10 @@ def count_xmas(grid: List[List[str]]) -> int:
     count = 0
 
     def backtrack(row: int, col: int, index: int, direction: Tuple[int, int]) -> bool:
-        # Out of bounds or character mismatch
+
         if not (0 <= row < rows and 0 <= col < cols) or grid[row][col] != target_word[index]:
             return False
-        # If the entire word is found
+
         if index == len(target_word) - 1:
             return True
 
@@ -45,7 +45,29 @@ def count_xmas(grid: List[List[str]]) -> int:
 
 # ========================= PART 2 =========================
 
+from typing import List, Tuple
 
+def count_xmas2(grid: List[List[str]]) -> int:
+    n = len(grid)
+    m = len(grid[0])
+
+    def has_xmas(i, j):
+        if not (1 <= i < n - 1 and 1 <= j < m - 1):
+            return False
+        if grid[i][j] != "A":
+            return False
+
+        # Check both diagonals
+        diag_1 = f"{grid[i-1][j-1]}{grid[i+1][j+1]}"
+        diag_2 = f"{grid[i-1][j+1]}{grid[i+1][j-1]}"
+
+        return diag_1 in ["MS", "SM"] and diag_2 in ["MS", "SM"]
+    count = 0
+    for i in range(n):
+        for j in range(m):
+            count += has_xmas(i, j)
+
+    return count
 import sys
 
 if sys.argv[1]=="test":
@@ -58,3 +80,4 @@ wordGrid=[
 ]
 
 print(count_xmas(wordGrid))
+print(count_xmas2(wordGrid))
