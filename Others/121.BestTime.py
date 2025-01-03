@@ -1,4 +1,5 @@
 
+
 def maxProfit(prices):
     left = 0 #Buy
     right = 1 #Sell
