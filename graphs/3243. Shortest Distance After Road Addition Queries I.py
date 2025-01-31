@@ -64,4 +64,3 @@ n = 5
 queries = [[2,4],[0,2],[0,4]]
 
 print(Solution().shortestDistanceAfterQueries(n, queries)) # [3,2,1]
-
