@@ -44,6 +44,3 @@ class Solution:
 
 
         return totalPairs-goodPairs
-
-
-
