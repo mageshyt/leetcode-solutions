@@ -41,12 +41,14 @@ class Solution:
 
         while lo < hi:
             mid = lo + (hi - lo) // 2
+            print(mid)
 
             if canWeSteal(mid):
                 hi = mid
             else:
-                lo = mid + 1
+                lo = mid + 1 
 
         return lo
 
-
+s=Solution()
+print(s.minCapability([2,3,5,9],2))
