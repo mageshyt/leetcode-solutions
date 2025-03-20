@@ -59,6 +59,24 @@ class Solution:
                 count += 1
                 flip_bits.append(i)
         return count
+    # sliding window
+    def minOperations(self, nums: List[int]) -> int:
+        # base case
+        if len(nums) < 3:
+            return -1
+        count = 0
+
+        for i in range(2,len(nums)):
+            if nums[i-2]==0:
+                count+=1
+                nums[i-2]^=1
+                nums[i-1]^=1
+                nums[i]^=1
+
+        if nums[-1]==0 or nums[-2]==0:
+            return -1
+
+        return count
 
 print(Solution().minOperations([0,1,1,1,0,0])) #3
 print(Solution().minOperations([0,1,1,1])) #-1
