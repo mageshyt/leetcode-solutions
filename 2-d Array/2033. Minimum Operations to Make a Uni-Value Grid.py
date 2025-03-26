@@ -6,13 +6,13 @@ class Solution:
         n=len(grid)
         values=sorted([val for row in grid for val in row])
 
-        diff=[abs(val-values[n*n//2]) for val in values]
+        diff=[abs(val-values[0]) % x for val in values]
 
-        if any(d%x!=0 for d in diff):
+        if any(d !=0 for d in diff):
             return -1
 
         # get the median
-        median=values[n*n//2]
+        median=values[len(values)//2]
         operations=sum(abs(val-median)//x for val in values)
         return operations
 
