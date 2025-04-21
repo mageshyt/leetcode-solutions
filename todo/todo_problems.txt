@@ -40,3 +40,7 @@
 # TODO - 2025 MAR
 
 1. 2818. Apply Operations to Maximize Score | Hard | 29 Mar 2025 | TODO
+
+# TODO - 2025 APR
+
+1.2145. Count the Hidden Sequences | Medium | 21 Apr 2025 | TODO
