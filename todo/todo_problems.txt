@@ -44,3 +44,4 @@
 # TODO - 2025 APR
 
 1.2145. Count the Hidden Sequences | Medium | 21 Apr 2025 | TODO
+2.2145. Count the Hidden Sequences | Medium | 22 Apr 2025 | TODO
