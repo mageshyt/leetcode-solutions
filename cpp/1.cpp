@@ -16,6 +16,7 @@ public:
         length = value;
     };
 
+
     void setWidth(float value)
     {
         width = value;
