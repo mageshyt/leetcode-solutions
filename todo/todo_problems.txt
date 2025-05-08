@@ -46,3 +46,4 @@
 1.2145. Count the Hidden Sequences | Medium | 21 Apr 2025 | TODO
 2.2145. Count the Hidden Sequences | Medium | 22 Apr 2025 | TODO
 3.2799. Count Complete Subarrays in an Array | Medium | 25 Apr 2025 | TODO
+4.3343. Count Number of Balanced Permutations | Hard | 9 may 2025 | TODO
