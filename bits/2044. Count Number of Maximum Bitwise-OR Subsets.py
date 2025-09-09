@@ -71,6 +71,25 @@ class Solution:
 
         return dfs(0, 0)
 
+    # bottomup
+    def countMaxOrSubsetsBottomUp(self, nums: List[int]) -> int:
+        max_or = 0
+        for num in nums:
+            max_or |= num
+
+        dp = {0: 1}  # dp[or_value] = count of subsets with that or_value
+
+        for num in nums:
+            new_dp = dp.copy()
+            for or_value in dp:
+                new_or = or_value | num
+                if new_or not in new_dp:
+                    new_dp[new_or] = 0
+                new_dp[new_or] += dp[or_value]
+            dp = new_dp
+
+        return dp.get(max_or, 0)
+
 # Time complexity: O(2^n)
 # Space complexity: O(n)
 
