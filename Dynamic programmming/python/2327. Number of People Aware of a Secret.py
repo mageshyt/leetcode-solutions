@@ -58,7 +58,6 @@ class Solution:
 
         return total_people
 
-# Example usage:
 solution = Solution()
 print(solution.peopleAwareOfSecret(6, 2, 4))  # Output: 5
 print(solution.peopleAwareOfSecret(4, 1, 3))  # Output: 6
