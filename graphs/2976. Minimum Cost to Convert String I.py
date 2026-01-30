@@ -79,8 +79,39 @@ class Solution:
             min_cost+=min_cost_map[src][dst]
 
         return min_cost
+    # Floyd-Warshall algorithm
+    def minimumCost_FloydWarshall(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
+        graph = [[float('inf')] * 26 for _ in range(26)]
+        for i in range(26):
+            graph[i][i] = 0
 
+        for src, dst , cost in zip(original,changed,cost):
+            u = ord(src) - ord('a')
+            v = ord(dst) - ord('a')
+            graph[u][v] = min(graph[u][v], cost)
+
+        for via in range(26):
+            for i in range(26):
+                for j in range(26):
+                    if graph[i][via] + graph[via][j] < graph[i][j]:
+                        graph[i][j] = graph[i][via] + graph[via][j]
+
+        total_cost = 0
+        for s, t in zip(source, target):
+            u = ord(s) - ord('a')
+            v = ord(t) - ord('a')
+            if graph[u][v] == float('inf'):
+                return -1
+            total_cost += graph[u][v]
+
+        return total_cost
+
+    
+        
+        
 
 
 
 print(Solution().minimumCost("abcd", "acbe", ["a","b","c","c","e","d"], ["b","c","b","e","b","e"], [2,5,5,1,2,20]))  # 28
+print(Solution().minimumCost_FloydWarshall("abcd", "acbe", ["a","b","c","c","e","d"], ["b","c","b","e","b","e"], [2,5,5,1,2,20]))  # 28
+
