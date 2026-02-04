@@ -22,32 +22,43 @@ Example 2:
 Input: nums = [1], k = 1
 Output: [1]
 """
-from typing import List
-import heapq
+from typing import  List
+from collections import deque
 
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        heap = []  # Max heap to store the elements
-        res = []   # List to store the maximum values for each window
-        
-        for i in range(len(nums)):
-            # Push the negative of the element and its index into the heap
-            heapq.heappush(heap, (-nums[i], i))
-            
-            # If the current index is at least k-1 (reached the window size)
-            if i >= k - 1:
-                # Remove elements that are out of the current window
-                while heap and heap[0][1] <= i - k:
-                    heapq.heappop(heap)
-                
-                # Append the maximum value of the current window to the result list
-                res.append(-heap[0][0])
-        
+        q = deque()
+        n = len(nums)
+        start = 0
+
+        res = []
+
+        for i in range(n):
+
+            while q and nums[q[-1]] < nums[i]:
+                q.pop()
+
+            q.append(i)
+
+            if i - start + 1 == k:
+                res.append(nums[q[0]])
+
+                if q[0] == start:
+                    q.popleft()
+
+                start += 1
+
+
+
         return res
+            
+
+
+
   
 
-nums = [1,3,-1,-3,5,3,6,7]
-k = 3
+nums = [1,-1]
+k = 1
 
 print(Solution().maxSlidingWindow(nums,k))
 
