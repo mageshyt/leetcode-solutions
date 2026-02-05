@@ -44,19 +44,14 @@ from collections import defaultdict
 class Solution:
     def longestBalanced(self, s: str) -> int:
         max_length = 0
-        char_count = defaultdict(int)
-        left = 0
+        n = len(s)
 
-        for right in range(len(s)):
-            char_count[s[right]] += 1
-            while len(set(char_count.values())) > 1:
-                char_count[s[left]] -= 1
-                if char_count[s[left]] == 0:
-                    del char_count[s[left]]
-                left += 1
-
-            max_length = max(max_length, right - left + 1)
-
+        for i in range(n):
+            char_count = defaultdict(int)
+            for j in range(i, n):
+                char_count[s[j]] += 1
+                if len(set(char_count.values())) == 1:
+                    max_length = max(max_length, j - i + 1)
 
         return max_length
 
