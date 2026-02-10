@@ -45,7 +45,7 @@ There are no good tuples. Therefore, the answer is -1.
 
 """
 
-from collections import defaultdict
+
 from typing import List
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
