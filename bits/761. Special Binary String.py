@@ -22,7 +22,6 @@ Example 2:
 Input: s = "10"
 Output: "10"
 """
-
 class Solution:
     def makeLargestSpecial(self, s: str) -> str:
         if not s:
