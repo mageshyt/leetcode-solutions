@@ -69,8 +69,24 @@ class Solution:
     def reverse(self, s):
         return s[::-1]
 
+    def generate_str(self,num,memo={}):
+        if num == 1:
+            return "0"
+
+        if num in memo:
+            return memo[num]
+        prev = self.generate_str(num-1)
+
+        memo[num] = prev + "1" + self.reverse(self.invert(prev))
+
+        return memo[num]
+
+
+    def findKthBit2(self,n,k):
+        return self.generate_str(n)[k-1]
 
 # Time complexity: O(2^n)
 # Space complexity: O(2^n)
 
 print(Solution().findKthBit(3, 1)) # 0
+print(Solution().findKthBit2(3, 1)) # 0
