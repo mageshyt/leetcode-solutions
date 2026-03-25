@@ -22,7 +22,6 @@ The diagram above shows the grid before and after the transformation.
 
 Example 2:
 
-​​​​​​​
 Input: grid = [[3,4,2,3],[2,3,4,2]], x = 0, y = 2, k = 2
 
 Output: [[3,4,4,2],[2,3,2,3]]
@@ -58,10 +57,3 @@ if __name__ == "__main__":
     s = Solution()
     print(s.reverseSubmatrix([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]], 1, 0, 3))
     print(s.reverseSubmatrix([[3,4,2,3],[2,3,4,2]], 0, 2, 2))
-
-
-
-
-
-
-
