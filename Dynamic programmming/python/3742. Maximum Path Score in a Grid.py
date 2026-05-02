@@ -20,7 +20,7 @@ Input: grid = [[0, 1],[2, 0]], k = 1
 
 Output: 2
 
-Explanation:​​​​​​​
+Explanation:
 
 The optimal path is:
 
